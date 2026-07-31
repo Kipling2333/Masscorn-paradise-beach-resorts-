@@ -21,6 +21,22 @@ export default async function SpaPage() {
 
   const user = await getSessionUser();
 
+  // Curated fallback spa imagery for stunning visual presentation
+  const spaImages = [
+    "/images/spa.jpg",
+    "/images/pool.jpg",
+    "/images/villa.jpg",
+    "/images/hero.jpg"
+  ];
+
+  const defaultServices = [
+    { id: 1, category: "Massage", name: "Tidal Stone Therapy", price: 180, durationMinutes: 90, description: "Warm basalt stones soaked in mineral seawater combined with deep tissue manipulation.", imageUrl: "/images/spa.jpg" },
+    { id: 2, category: "Facial", name: "Marine Botanical Radiance", price: 150, durationMinutes: 60, description: "Revitalizing facial using cold-pressed island coconut, algae, and organic extracts.", imageUrl: "/images/pool.jpg" },
+    { id: 3, category: "Ritual", name: "Circadian Sunset Ceremony", price: 220, durationMinutes: 120, description: "Head-to-toe holistic renewal timed perfectly with the golden dusk light over the bay.", imageUrl: "/images/villa.jpg" }
+  ];
+
+  const activeServices = services.length > 0 ? services : defaultServices;
+
   return (
     <div className="bg-ink pb-28">
       <section className="relative flex min-h-[68svh] items-end overflow-hidden">
@@ -63,37 +79,38 @@ export default async function SpaPage() {
       <section className="mx-auto mt-24 max-w-[1500px] px-6 md:px-10">
         <SectionHeading dark eyebrow="The Rituals" title={<>Choose your <span className="italic text-gold">ceremony</span></>} />
         <div className="mt-16 grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((s, i) => (
-            <Reveal key={s.id} delay={0.06 * (i % 3)}>
-              <div className="group border border-ivory/10 rounded-lg overflow-hidden bg-ink/40 pb-8 flex flex-col h-full shadow-xl">
-                {s.imageUrl && (
-                  <div className="relative h-56 w-full overflow-hidden">
+          {activeServices.map((s, i) => {
+            const imageSrc = s.imageUrl || spaImages[i % spaImages.length];
+            return (
+              <Reveal key={s.id} delay={0.06 * (i % 3)}>
+                <div className="group border border-ivory/10 rounded-lg overflow-hidden bg-ink/40 pb-8 flex flex-col h-full shadow-xl">
+                  <div className="relative h-60 w-full overflow-hidden">
                     <Image 
-                      src={s.imageUrl} 
+                      src={imageSrc} 
                       alt={s.name} 
                       fill 
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
-                )}
-                <div className="p-6 flex flex-col flex-grow">
-                  <div className="flex items-start justify-between gap-4">
-                    <div>
-                      <div className="text-[10px] tracking-[0.3em] uppercase text-gold">{s.category}</div>
-                      <h3 className="mt-2 font-display text-2xl text-ivory group-hover:text-gold transition-colors">{s.name}</h3>
-                    </div>
-                    <div className="text-right">
-                      <div className="font-display text-2xl text-gold">${Number(s.price).toLocaleString()}</div>
-                      <div className="mt-1 flex items-center justify-end gap-1 text-[11px] text-ivory/45">
-                        <Clock size={11} /> {s.durationMinutes} min
+                  <div className="p-6 flex flex-col flex-grow">
+                    <div className="flex items-start justify-between gap-4">
+                      <div>
+                        <div className="text-[10px] tracking-[0.3em] uppercase text-gold">{s.category || "Signature"}</div>
+                        <h3 className="mt-2 font-display text-2xl text-ivory group-hover:text-gold transition-colors">{s.name}</h3>
+                      </div>
+                      <div className="text-right">
+                        <div className="font-display text-2xl text-gold">${Number(s.price).toLocaleString()}</div>
+                        <div className="mt-1 flex items-center justify-end gap-1 text-[11px] text-ivory/45">
+                          <Clock size={11} /> {s.durationMinutes} min
+                        </div>
                       </div>
                     </div>
+                    <p className="mt-3 text-sm leading-relaxed text-ivory/55 flex-grow">{s.description}</p>
                   </div>
-                  <p className="mt-3 text-sm leading-relaxed text-ivory/55 flex-grow">{s.description}</p>
                 </div>
-              </div>
-            </Reveal>
-          ))}
+              </Reveal>
+            );
+          })}
         </div>
       </section>
 
@@ -108,7 +125,7 @@ export default async function SpaPage() {
         <div className="mt-12">
           <Reveal>
             <SpaForm
-              services={services.map((s) => ({ id: s.id, name: s.name, durationMinutes: s.durationMinutes, price: s.price }))}
+              services={activeServices.map((s) => ({ id: s.id, name: s.name, durationMinutes: s.durationMinutes, price: s.price }))}
               user={user ? { name: user.name, email: user.email, role: user.role, loyaltyTier: user.loyaltyTier } : null}
             />
           </Reveal>

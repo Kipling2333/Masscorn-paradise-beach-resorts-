@@ -1,8 +1,8 @@
 {
   "dialect": "postgresql",
   "schema": "./src/db/schema.ts",
-  "out": "./drizzle",
+  "out": "./drizzle/migrations",
   "dbCredentials": {
-    "url": "postgresql://postgres:Abdallahi.k1@localhost:5432/masscorn_resort"
+    "url": "postgresql://postgres:Abdallahi.k1@db.ojsdbymfkqgkhnlpidgz.supabase.co:5432/postgres"
   }
 }

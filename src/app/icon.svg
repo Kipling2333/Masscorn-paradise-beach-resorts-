@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0c2a2c" />
+      <stop offset="100%" stop-color="#071d1f" />
+    </linearGradient>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fdf3cf" />
+      <stop offset="22%" stop-color="#f3da8c" />
+      <stop offset="45%" stop-color="#d9ad5a" />
+      <stop offset="80%" stop-color="#e8cd82" />
+      <stop offset="100%" stop-color="#8f6a2e" />
+    </linearGradient>
+    <linearGradient id="gv" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fdf3cf" />
+      <stop offset="50%" stop-color="#c69a4e" />
+      <stop offset="100%" stop-color="#7c5a26" />
+    </linearGradient>
+  </defs>
+  <rect width="240" height="240" rx="40" fill="url(#bg)" />
+  <g fill="none" stroke="url(#g)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <g transform="translate(120,54)">
+      <path d="M-24,18 L-27,-6 L-13,5 L0,-18 L13,5 L27,-6 L24,18 Z" fill="url(#gv)" stroke="none" />
+      <rect x="-24" y="16" width="48" height="5" rx="1.4" fill="url(#gv)" stroke="none" />
+    </g>
+    <g transform="translate(120,140)">
+      <path
+        d="M0,-38 C20,-32 32,-12 32,14 C32,14 16,26 0,42 C-16,26 -32,14 -32,14 C-32,-12 -20,-32 0,-38 Z"
+        fill="url(#gv)"
+        stroke="none"
+      />
+      <g stroke="#0c2a2c" stroke-width="1.6" opacity="0.75">
+        <path d="M0,-32 L0,36" />
+        <path d="M-13,-22 C-15,-2 -15,16 -8,30" />
+        <path d="M13,-22 C15,-2 15,16 8,30" />
+      </g>
+    </g>
+  </g>
+  <text x="120" y="214" text-anchor="middle" font-family="Georgia, serif" font-size="30" letter-spacing="2" fill="url(#g)" font-weight="700">M</text>
+</svg>

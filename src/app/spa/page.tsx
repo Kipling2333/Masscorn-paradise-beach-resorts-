@@ -4,6 +4,7 @@ import { db } from "@/db";
 import { spaServices } from "@/db/schema";
 import { getSessionUser } from "@/lib/auth";
 import { ParallaxImg, Reveal, SectionHeading, SpaForm } from "@/components/widgets";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Spa & Wellness — Ocean Rituals",
@@ -11,7 +12,13 @@ export const metadata: Metadata = {
 };
 
 export default async function SpaPage() {
-  const services = await db.select().from(spaServices);
+  let services: any[] = [];
+  try {
+    services = await db.select().from(spaServices);
+  } catch (error) {
+    console.error("Failed to load spa services:", error);
+  }
+
   const user = await getSessionUser();
 
   return (
@@ -58,20 +65,32 @@ export default async function SpaPage() {
         <div className="mt-16 grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((s, i) => (
             <Reveal key={s.id} delay={0.06 * (i % 3)}>
-              <div className="group border-b border-ivory/10 pb-8">
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <div className="text-[10px] tracking-[0.3em] uppercase text-gold">{s.category}</div>
-                    <h3 className="mt-2 font-display text-2xl text-ivory group-hover:text-gold transition-colors">{s.name}</h3>
+              <div className="group border border-ivory/10 rounded-lg overflow-hidden bg-ink/40 pb-8 flex flex-col h-full shadow-xl">
+                {s.imageUrl && (
+                  <div className="relative h-56 w-full overflow-hidden">
+                    <Image 
+                      src={s.imageUrl} 
+                      alt={s.name} 
+                      fill 
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
                   </div>
-                  <div className="text-right">
-                    <div className="font-display text-2xl text-gold">${Number(s.price).toLocaleString()}</div>
-                    <div className="mt-1 flex items-center justify-end gap-1 text-[11px] text-ivory/45">
-                      <Clock size={11} /> {s.durationMinutes} min
+                )}
+                <div className="p-6 flex flex-col flex-grow">
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <div className="text-[10px] tracking-[0.3em] uppercase text-gold">{s.category}</div>
+                      <h3 className="mt-2 font-display text-2xl text-ivory group-hover:text-gold transition-colors">{s.name}</h3>
+                    </div>
+                    <div className="text-right">
+                      <div className="font-display text-2xl text-gold">${Number(s.price).toLocaleString()}</div>
+                      <div className="mt-1 flex items-center justify-end gap-1 text-[11px] text-ivory/45">
+                        <Clock size={11} /> {s.durationMinutes} min
+                      </div>
                     </div>
                   </div>
+                  <p className="mt-3 text-sm leading-relaxed text-ivory/55 flex-grow">{s.description}</p>
                 </div>
-                <p className="mt-3 text-sm leading-relaxed text-ivory/55">{s.description}</p>
               </div>
             </Reveal>
           ))}

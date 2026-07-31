@@ -7,20 +7,11 @@ if (!databaseUrl) {
   throw new Error("DATABASE_URL is required");
 }
 
-const globalForDb = globalThis as typeof globalThis & {
-  __arenaNextJsPostgresqlPool?: Pool;
-};
-
-export const pool =
-  globalForDb.__arenaNextJsPostgresqlPool ??
-  new Pool({
-    connectionString: databaseUrl,
-    // Add SSL configuration required by Supabase in cloud environments
-    ssl: process.env.NODE_ENV === "production" ? { rejectUnauthorized: false } : undefined,
-  });
-
-if (process.env.NODE_ENV !== "production") {
-  globalForDb.__arenaNextJsPostgresqlPool = pool;
-}
+const pool = new Pool({
+  connectionString: databaseUrl,
+  ssl: {
+    rejectUnauthorized: false,
+  },
+});
 
 export const db = drizzle(pool);

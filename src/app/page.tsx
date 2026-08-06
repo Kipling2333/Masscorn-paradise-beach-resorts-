@@ -38,7 +38,7 @@ export default async function HomePage() {
     name: "Masscorn Paradise Beach Resort",
     description: "Ultra-luxury beachfront resort with private villas, oceanfront spa, fine dining and destination weddings.",
     url: "https://masscorn-paradise.vercel.app",
-    image: "https://i.ibb.co/tMR6Tm3m/hero.jpg",
+    image: "https://i.ibb.co/kVz1rP66/hero.jpg",
     priceRange: "$$$$",
     telephone: "+255774000100",
     address: {
@@ -61,7 +61,7 @@ export default async function HomePage() {
       {/* ------------------------------- HERO ------------------------------- */}
       <section className="relative flex min-h-[100svh] flex-col justify-end overflow-hidden">
         <div className="absolute inset-0">
-          <img src="https://i.ibb.co/tMR6Tm3m/hero.jpg" alt="Aerial view of Masscorn Paradise Beach Resort at golden hour" className="animate-kenburns h-full w-full object-cover" />
+          <img src="https://i.ibb.co/kVz1rP66/hero.jpg" alt="Aerial view of Masscorn Paradise Beach Resort at golden hour" className="animate-kenburns h-full w-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-b from-ink/60 via-ink/10 to-ink" />
           <div className="absolute inset-0 bg-gradient-to-r from-ink/40 via-transparent to-transparent" />
         </div>
@@ -112,7 +112,7 @@ export default async function HomePage() {
         <div className="mx-auto grid max-w-[1500px] items-center gap-16 px-6 md:px-10 lg:grid-cols-2">
           <div className="relative">
             <Reveal>
-              <ParallaxImg src="/images/aerial.jpg" alt="Resort pools and palm gardens from above" className="aspect-[4/5] rounded-2xl" speed={0.16} />
+              <ParallaxImg src="https://i.ibb.co/tMR6Tm3m/hero.jpg" alt="Resort pools and palm gardens from above" className="aspect-[4/5] rounded-2xl" speed={0.16} />
             </Reveal>
             <Reveal delay={0.2} className="absolute -bottom-10 -right-4 hidden w-64 md:block">
               <div className="overflow-hidden rounded-2xl border-8 border-ivory shadow-2xl">

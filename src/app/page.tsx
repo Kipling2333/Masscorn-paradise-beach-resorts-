@@ -38,7 +38,7 @@ export default async function HomePage() {
     name: "Masscorn Paradise Beach Resort",
     description: "Ultra-luxury beachfront resort with private villas, oceanfront spa, fine dining and destination weddings.",
     url: "https://masscorn-paradise.vercel.app",
-    image: "https://masscorn-paradise.vercel.app/images/hero.jpg",
+    image: "https://i.ibb.co/tMR6Tm3m/hero.jpg",
     priceRange: "$$$$",
     telephone: "+255774000100",
     address: {
@@ -61,7 +61,7 @@ export default async function HomePage() {
       {/* ------------------------------- HERO ------------------------------- */}
       <section className="relative flex min-h-[100svh] flex-col justify-end overflow-hidden">
         <div className="absolute inset-0">
-          <img src="/images/hero.jpg" alt="Aerial view of Masscorn Paradise Beach Resort at golden hour" className="animate-kenburns h-full w-full object-cover" />
+          <img src="https://i.ibb.co/tMR6Tm3m/hero.jpg" alt="Aerial view of Masscorn Paradise Beach Resort at golden hour" className="animate-kenburns h-full w-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-b from-ink/60 via-ink/10 to-ink" />
           <div className="absolute inset-0 bg-gradient-to-r from-ink/40 via-transparent to-transparent" />
         </div>
@@ -74,13 +74,13 @@ export default async function HomePage() {
             </div>
           </Reveal>
           <Reveal delay={0.3}>
-            <h1 className="mt-6 max-w-4xl font-display text-[13vw] font-light leading-[0.98] text-ivory sm:text-7xl md:text-8xl">
+            <h1 className="mt-6 max-w-4xl font-display text-[13vw] font-light leading-[0.98] text-ivory drop-shadow-lg sm:text-7xl md:text-8xl">
               Where the horizon
               <span className="block italic text-shimmer">becomes your own</span>
             </h1>
           </Reveal>
           <Reveal delay={0.45}>
-            <p className="mt-6 max-w-xl text-[15px] leading-relaxed text-ivory/70">
+            <p className="mt-6 max-w-xl text-[15px] leading-relaxed text-ivory/80 drop-shadow">
               Sixty-two residences and villas drift along 2.4 kilometres of private ivory sand — a world of quiet
               mornings, ocean rituals and dinners beneath a thousand stars.
             </p>
@@ -212,7 +212,7 @@ export default async function HomePage() {
           <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
               { img: "/images/cruise.jpg", icon: Waves, t: "Sunset Dhow Cruise", d: "Champagne at golden hour aboard a hand-built dhow." },
-              { img: "/images/hero.jpg", icon: MapPin, t: "Sandbank Picnic", d: "A private chef on a vanishing island at low tide." },
+              { img: "https://i.ibb.co/tMR6Tm3m/hero.jpg", icon: MapPin, t: "Sandbank Picnic", d: "A private chef on a vanishing island at low tide." },
               { img: "/images/aerial.jpg", icon: ConciergeBell, t: "Reef Snorkel Safari", d: "Guided drift over our house reef with marine biologists." },
               { img: "/images/dining.jpg", icon: UtensilsCrossed, t: "Chef's Table", d: "Seven courses where the lagoon meets the flame." },
             ].map((x, i) => (

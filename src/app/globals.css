@@ -4,17 +4,16 @@
   --font-display: var(--font-cormorant), "Times New Roman", serif;
   --font-body: var(--font-jost), system-ui, sans-serif;
 
-  /* MASSCORN PARADISE BEACH RESORT */
-  --color-ink: #0B2522;
-  --color-ink-deep: #051715;
+  /* MASSCORN PARADISE BEACH RESORT - SUNNY VIBRANT YELLOW */
+  --color-ink: #FFF159;       /* Bright Resort Yellow Background */
+  --color-ink-deep: #E5D640;  /* Slightly deeper yellow shade */
 
-  --color-ivory: #F8F4EC;
-  --color-sand: #E7DDCC;
+  --color-ivory: #1A1A1A;     /* Dark Charcoal Text for readability */
+  --color-sand: #333333;      /* Secondary Dark Text */
 
-  --color-gold: #C8A96B;
-  --color-gold-soft: #E5D3AB;
+  --color-gold: #C8A96B;      /* Luxury Gold */
+  --color-gold-soft: #D4A373; /* Warm Amber */
 }
-
 
 @keyframes marquee {
   from {
@@ -61,14 +60,13 @@ body {
   background: var(--color-ink);
   color: var(--color-ivory);
   font-family: var(--font-body);
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: 0.01em;
 }
 
-
 ::selection {
-  background: #C8A96B;
-  color: #051715;
+  background: #1A1A1A;
+  color: #FFF159;
 }
 
 ::-webkit-scrollbar {
@@ -76,11 +74,11 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #051715;
+  background: #E5D640;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(200, 169, 107, 0.5);
+  background: #1A1A1A;
   border-radius: 8px;
 }
 
@@ -89,16 +87,11 @@ body {
 }
 
 input[type="date"] {
-  color-scheme: dark;
-}
-
-.glass-light input[type="date"],
-.bg-white input[type="date"] {
   color-scheme: light;
 }
 
 /* ==========================================
-   LUXURY BUTTONS
+    LUXURY BUTTONS
 ========================================== */
 
 .btn-gold {
@@ -107,14 +100,8 @@ input[type="date"] {
   justify-content: center;
   gap: 0.6rem;
 
- background: linear-gradient(
-  120deg,
-  #E5D3AB,
-  #C8A96B 50%,
-  #9E7A3B
-);
-
-  color: #051715;
+  background: #1A1A1A;
+  color: #FFF159;
 
   padding: 0.7rem 1.6rem;
 
@@ -125,11 +112,12 @@ input[type="date"] {
 
   transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 
-  box-shadow: 0 10px 30px -12px rgba(200, 169, 107, 0.55);
+  box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.25);
 }
 
 .btn-gold:hover {
-  filter: brightness(1.08);
+  background: #C8A96B;
+  color: #1A1A1A;
   transform: translateY(-2px);
 }
 
@@ -139,22 +127,23 @@ input[type="date"] {
   justify-content: center;
   gap: 0.6rem;
 
-  background: #0B2522;
-  color: #F8F4EC;
+  background: #FFF159;
+  color: #1A1A1A;
+  border: 1px solid #1A1A1A;
 
   padding: 0.7rem 1.6rem;
 
   font-size: 11px;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  font-weight: 400;
+  font-weight: 500;
 
   transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .btn-ink:hover {
-  background: #C8A96B;
-  color: #051715;
+  background: #1A1A1A;
+  color: #FFF159;
 }
 
 .btn-ghost {
@@ -163,8 +152,8 @@ input[type="date"] {
   justify-content: center;
   gap: 0.6rem;
 
-  border: 1px solid rgba(248, 244, 236, 0.3);
-  color: #F8F4EC;
+  border: 1px solid rgba(26, 26, 26, 0.3);
+  color: #1A1A1A;
 
   padding: 0.7rem 1.6rem;
 
@@ -176,45 +165,41 @@ input[type="date"] {
 }
 
 .btn-ghost:hover {
-  border-color: #C8A96B;
-  color: #C8A96B;
+  border-color: #1A1A1A;
+  background: rgba(26, 26, 26, 0.05);
 }
 
 /* ==========================================
-   GLASS EFFECTS
+    GLASS EFFECTS
 ========================================== */
 
 .glass-dark {
-  background: rgba(5, 23, 21, 0.72);
+  background: rgba(255, 255, 255, 0.65);
   backdrop-filter: blur(22px) saturate(140%);
   -webkit-backdrop-filter: blur(22px) saturate(140%);
-  border: 1px solid rgba(248, 244, 236, 0.12);
+  border: 1px solid rgba(26, 26, 26, 0.12);
   border-radius: 1rem;
 }
 
 .glass-light {
-  background: rgba(255, 255, 255, 0.66);
-
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(20px) saturate(150%);
   -webkit-backdrop-filter: blur(20px) saturate(150%);
-
-  border: 1px solid rgba(11, 37, 34, 0.08);
-
+  border: 1px solid rgba(26, 26, 26, 0.08);
   border-radius: 1rem;
-
-  box-shadow: 0 24px 60px -32px rgba(11, 37, 34, 0.25);
+  box-shadow: 0 24px 60px -32px rgba(0, 0, 0, 0.15);
 }
 
 /* ==========================================
-   TEXT EFFECTS
+    TEXT EFFECTS
 ========================================== */
 
 .text-shimmer {
   background: linear-gradient(
     110deg,
-    #C8A96B 20%,
-    #F4E6C5 45%,
-    #C8A96B 70%
+    #1A1A1A 20%,
+    #C8A96B 45%,
+    #1A1A1A 70%
   );
 
   background-size: 200% auto;
@@ -231,7 +216,7 @@ input[type="date"] {
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(200, 169, 107, 0.6),
+    rgba(26, 26, 26, 0.3),
     transparent
   );
 

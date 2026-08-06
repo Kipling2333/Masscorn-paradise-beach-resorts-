@@ -38,7 +38,7 @@ export default async function HomePage() {
     name: "Masscorn Paradise Beach Resort",
     description: "Ultra-luxury beachfront resort with private villas, oceanfront spa, fine dining and destination weddings.",
     url: "https://masscorn-paradise.vercel.app",
-    image: "https://i.ibb.co/kVz1rP66/hero.jpg",
+    image: "https://i.ibb.co/tMR6Tm3m/hero.jpg",
     priceRange: "$$$$",
     telephone: "+255774000100",
     address: {
@@ -59,14 +59,14 @@ export default async function HomePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       {/* ------------------------------- HERO ------------------------------- */}
-      <section className="relative flex min-h-[100svh] flex-col justify-end overflow-hidden">
+      <section className="relative flex min-h-[100svh] flex-col justify-end overflow-hidden pt-28">
+        {/* Solid / Darker gradient overlay behind header & hero for high readability */}
         <div className="absolute inset-0">
-          <img src="https://i.ibb.co/kVz1rP66/hero.jpg" alt="Aerial view of Masscorn Paradise Beach Resort at golden hour" className="animate-kenburns h-full w-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-b from-ink/60 via-ink/10 to-ink" />
-          <div className="absolute inset-0 bg-gradient-to-r from-ink/40 via-transparent to-transparent" />
+          <img src="https://i.ibb.co/tMR6Tm3m/hero.jpg" alt="Masscorn Paradise Beach Resort view" className="animate-kenburns h-full w-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-b from-ink/90 via-ink/40 to-ink" />
         </div>
 
-        <div className="relative mx-auto w-full max-w-[1500px] px-6 pb-10 pt-40 md:px-10">
+        <div className="relative mx-auto w-full max-w-[1500px] px-6 pb-10 pt-16 md:px-10">
           <Reveal delay={0.15}>
             <div className="flex items-center gap-4">
               <span className="hairline-gold w-16" />
@@ -74,13 +74,13 @@ export default async function HomePage() {
             </div>
           </Reveal>
           <Reveal delay={0.3}>
-            <h1 className="mt-6 max-w-4xl font-display text-[13vw] font-light leading-[0.98] text-ivory drop-shadow-lg sm:text-7xl md:text-8xl">
+            <h1 className="mt-6 max-w-4xl font-display text-[13vw] font-light leading-[0.98] text-ivory drop-shadow-md sm:text-7xl md:text-8xl">
               Where the horizon
               <span className="block italic text-shimmer">becomes your own</span>
             </h1>
           </Reveal>
           <Reveal delay={0.45}>
-            <p className="mt-6 max-w-xl text-[15px] leading-relaxed text-ivory/80 drop-shadow">
+            <p className="mt-6 max-w-xl text-[15px] leading-relaxed text-ivory/90 drop-shadow">
               Sixty-two residences and villas drift along 2.4 kilometres of private ivory sand — a world of quiet
               mornings, ocean rituals and dinners beneath a thousand stars.
             </p>
@@ -95,7 +95,7 @@ export default async function HomePage() {
               <WeatherWidget />
             </Reveal>
             <Reveal delay={0.85} className="hidden md:block">
-              <div className="flex items-center gap-8 text-[10px] tracking-[0.3em] uppercase text-ivory/45">
+              <div className="flex items-center gap-8 text-[10px] tracking-[0.3em] uppercase text-ivory/60">
                 <span className="flex items-center gap-2"><Award size={13} className="text-gold" /> World Travel Awards 2025</span>
                 <span className="flex items-center gap-2"><Leaf size={13} className="text-gold" /> EarthCheck Platinum</span>
                 <span className="flex items-center gap-2"><ShieldCheck size={13} className="text-gold" /> Forbes Five-Star</span>
@@ -105,7 +105,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <Marquee items={["Private Beach", "Oceanfront Spa", "Five Restaurants", "Sunset Dhow Cruises", "Paradise Elite Club", "Destination Weddings", "24/7 AI Concierge"]} />
+      <Marquee items={["Private Beach", "Oceanfront Spa", "Five Restaurants", "Sunset Experiences", "Paradise Elite Club", "Destination Weddings", "24/7 AI Concierge"]} />
 
       {/* ------------------------------ WELCOME ------------------------------ */}
       <section className="relative bg-ivory py-28 md:py-36">
@@ -113,11 +113,6 @@ export default async function HomePage() {
           <div className="relative">
             <Reveal>
               <ParallaxImg src="https://i.ibb.co/tMR6Tm3m/hero.jpg" alt="Resort pools and palm gardens from above" className="aspect-[4/5] rounded-2xl" speed={0.16} />
-            </Reveal>
-            <Reveal delay={0.2} className="absolute -bottom-10 -right-4 hidden w-64 md:block">
-              <div className="overflow-hidden rounded-2xl border-8 border-ivory shadow-2xl">
-                <img src="/images/villa.jpg" alt="Private villa at dusk" className="aspect-square w-full object-cover" />
-              </div>
             </Reveal>
           </div>
           <div>
@@ -211,10 +206,10 @@ export default async function HomePage() {
           </div>
           <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              { img: "/images/cruise.jpg", icon: Waves, t: "Sunset Dhow Cruise", d: "Champagne at golden hour aboard a hand-built dhow." },
+              { img: "https://i.ibb.co/tMR6Tm3m/hero.jpg", icon: Waves, t: "Sunset Shoreline Walks", d: "Champagne at golden hour along the private coastline." },
               { img: "https://i.ibb.co/tMR6Tm3m/hero.jpg", icon: MapPin, t: "Sandbank Picnic", d: "A private chef on a vanishing island at low tide." },
-              { img: "/images/aerial.jpg", icon: ConciergeBell, t: "Reef Snorkel Safari", d: "Guided drift over our house reef with marine biologists." },
-              { img: "/images/dining.jpg", icon: UtensilsCrossed, t: "Chef's Table", d: "Seven courses where the lagoon meets the flame." },
+              { img: "https://i.ibb.co/tMR6Tm3m/hero.jpg", icon: ConciergeBell, t: "Reef Snorkel Safari", d: "Guided drift over our house reef with marine biologists." },
+              { img: "https://i.ibb.co/tMR6Tm3m/hero.jpg", icon: UtensilsCrossed, t: "Chef's Table", d: "Seven courses where the lagoon meets the flame." },
             ].map((x, i) => (
               <Reveal key={x.t} delay={0.1 * i}>
                 <Link href="/experiences" className="group relative block overflow-hidden rounded-2xl">
@@ -236,15 +231,14 @@ export default async function HomePage() {
 
       {/* -------------------------------- DINING -------------------------------- */}
       <section className="relative overflow-hidden bg-ink py-32 md:py-44">
-        <ParallaxImg src="/images/dining.jpg" alt="Dinner on the beach at Masscorn" className="absolute inset-0 h-full" speed={0.2} />
-        <div className="absolute inset-0 bg-ink/55" />
+        <div className="absolute inset-0 bg-ink/75" />
         <div className="relative mx-auto max-w-[1500px] px-6 md:px-10">
           <SectionHeading
             dark
             index="04"
             eyebrow="Dining"
             title={<>Four tables, <span className="italic text-gold">one ocean</span></>}
-            sub="The Shore for feet-in-sand breakfasts, Azur for night-fresh seafood, Skyline for rooftop mixology and the Lagoon Bar for long, slow afternoons. Reservations open to resident and visiting guests."
+            sub="The Shore for feet-in-sand breakfasts, Azur for night-fresh seafood, Skyline for rooftop mixology and the Lagoon Bar for long, slow afternoons."
           />
           <Reveal delay={0.25}>
             <div className="mt-12 flex flex-wrap items-center justify-center gap-4">
@@ -264,7 +258,7 @@ export default async function HomePage() {
               index="05"
               eyebrow="Spa & Wellness"
               title={<>Sanctuaries for <span className="italic text-gold">the senses</span></>}
-              sub="Six open-air treatment pavilions rest above the tidal pools. Choose from Ocean Rituals, deep-tissue journeys, sunrise yoga on the jetty — or surrender the whole day to the Wellness Package."
+              sub="Six open-air treatment pavilions rest above the tidal pools. Choose from Ocean Rituals, deep-tissue journeys, and sunrise yoga."
             />
             <Reveal delay={0.25}>
               <div className="mt-10 space-y-4">
@@ -288,103 +282,18 @@ export default async function HomePage() {
             </Reveal>
           </div>
           <Reveal className="order-1 lg:order-2">
-            <ParallaxImg src="/images/spa.jpg" alt="Oceanfront spa pavilion" className="aspect-[4/5] rounded-2xl" speed={0.16} />
+            <ParallaxImg src="https://i.ibb.co/tMR6Tm3m/hero.jpg" alt="Oceanfront spa pavilion" className="aspect-[4/5] rounded-2xl" speed={0.16} />
           </Reveal>
-        </div>
-      </section>
-
-      {/* --------------------------- WEDDINGS & EVENTS --------------------------- */}
-      <section className="bg-ink py-28 md:py-36">
-        <div className="mx-auto max-w-[1500px] px-6 md:px-10">
-          <SectionHeading
-            dark
-            index="06"
-            eyebrow="Weddings & Events"
-            title={<>Occasions the ocean <span className="italic text-gold">remembers</span></>}
-          />
-          <div className="mt-16 grid gap-8 lg:grid-cols-2">
-            {[
-              {
-                img: "/images/wedding.jpg", k: "Weddings", href: "/weddings",
-                t: "Vows on ivory sand", d: "Three signature venues — the Beach Pavilion, Coral Lawn and Rooftop at Skyline — with a dedicated atelier of planners, florists and chefs.",
-              },
-              {
-                img: "/images/conference.jpg", k: "Conferences", href: "/events",
-                t: "Boardrooms with a horizon", d: "The 300-delegate Grand Pavilion, breakaway cabanas and corporate retreat charters. Productivity, perfumed by frangipani.",
-              },
-            ].map((c, i) => (
-              <Reveal key={c.k} delay={0.15 * i}>
-                <Link href={c.href} className="group relative block overflow-hidden rounded-2xl">
-                  <div className="aspect-[16/9] overflow-hidden">
-                    <img src={c.img} alt={c.k} className="h-full w-full object-cover transition-transform duration-[1400ms] group-hover:scale-105" />
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/25 to-transparent" />
-                  <div className="absolute bottom-0 p-8">
-                    <div className="text-[10px] tracking-[0.35em] uppercase text-gold">{c.k}</div>
-                    <div className="mt-2 font-display text-3xl text-ivory md:text-4xl">{c.t}</div>
-                    <p className="mt-3 max-w-md text-sm leading-relaxed text-ivory/65">{c.d}</p>
-                    <span className="mt-5 inline-flex items-center gap-2 text-[11px] tracking-[0.28em] uppercase text-gold">
-                      Enquire <ArrowRight size={13} />
-                    </span>
-                  </div>
-                </Link>
-              </Reveal>
-            ))}
-          </div>
         </div>
       </section>
 
       {/* ----------------------------- TESTIMONIALS ----------------------------- */}
       <section className="border-y border-ivory/10 bg-ink-deep py-28 md:py-32">
         <div className="mx-auto max-w-[1100px] px-6 md:px-10">
-          <SectionHeading dark index="07" eyebrow="Guest Stories" title={<>Voices of <span className="italic text-gold">Paradise</span></>} />
+          <SectionHeading dark index="06" eyebrow="Guest Stories" title={<>Voices of <span className="italic text-gold">Paradise</span></>} />
           <div className="mt-14">
             <Testimonials reviews={testimonials} />
           </div>
-        </div>
-      </section>
-
-      {/* ------------------------------- LOYALTY ------------------------------- */}
-      <section className="bg-ink py-28 md:py-36">
-        <div className="mx-auto max-w-[1500px] px-6 md:px-10">
-          <SectionHeading
-            dark
-            index="08"
-            eyebrow="Paradise Elite Club"
-            title={<>Loyalty, <span className="italic text-gold">gilded</span></>}
-            sub="Every stay earns points toward elevated tiers — member rates, complimentary upgrades, VIP check-in and welcome rituals from the moment you join. Enrolment is instant and free."
-          />
-          <div className="mt-16 grid gap-6 md:grid-cols-3">
-            {[
-              { tier: "Silver", pts: "On enrolment", off: "5% member rate", perks: ["Welcome drink ritual", "Late checkout 13:00", "Digital news privileges"] },
-              { tier: "Gold", pts: "2,500 points", off: "10% member rate", perks: ["Room upgrade on arrival", "VIP private check-in", "Sunset cruise — 25% off"], featured: true },
-              { tier: "Platinum", pts: "10,000 points", off: "15% member rate", perks: ["Suite upgrade guarantee", "Complimentary airport transfer", "Annual spa credit $300"] },
-            ].map((t, i) => (
-              <Reveal key={t.tier} delay={0.12 * i}>
-                <div className={`relative h-full rounded-2xl p-8 ${t.featured ? "glass-dark border-gold/50 shadow-[0_30px_80px_-30px_rgba(198,161,91,0.4)]" : "glass-dark"}`}>
-                  {t.featured && (
-                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gold px-4 py-1 text-[9px] tracking-[0.3em] uppercase text-ink">
-                      Most loved
-                    </span>
-                  )}
-                  <Sparkles size={18} className="text-gold" strokeWidth={1.2} />
-                  <div className="mt-4 font-display text-3xl text-ivory">{t.tier}</div>
-                  <div className="text-[10px] tracking-[0.3em] uppercase text-ivory/45">{t.pts}</div>
-                  <div className="mt-5 font-display text-2xl text-gold">{t.off}</div>
-                  <ul className="mt-6 space-y-3 text-sm text-ivory/65">
-                    {t.perks.map((p) => (
-                      <li key={p} className="flex items-start gap-3">
-                        <span className="mt-1.5 h-1 w-1 rounded-full bg-gold" /> {p}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-          <Reveal className="mt-14 text-center">
-            <Link href="/auth" className="btn-gold">Join the club — it is free</Link>
-          </Reveal>
         </div>
       </section>
 

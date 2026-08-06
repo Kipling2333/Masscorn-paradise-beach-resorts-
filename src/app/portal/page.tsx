@@ -165,7 +165,7 @@ export default function PortalPage() {
           <div>
             <span className="text-[11px] tracking-[0.4em] uppercase text-gold">Guest Portal</span>
             <h1 className="mt-3 font-display text-5xl font-light text-ivory md:text-6xl">
-              Karibu, <span className="italic">{user.name.split(" ")[0]}</span>
+              Welcome, <span className="italic">{user.name.split(" ")[0]}</span>
             </h1>
           </div>
           <span className={`w-fit rounded-full border px-4 py-1.5 text-[11px] tracking-[0.3em] uppercase ${TIER_STYLE[user.loyaltyTier]}`}>

@@ -3,6 +3,6 @@
   "schema": "./src/db/schema.ts",
   "out": "./drizzle/migrations",
   "dbCredentials": {
-    "url": "postgresql://postgres:Abdallahi.k1@db.ojsdbymfkqgkhnlpidgz.supabase.co:5432/postgres"
+    "url":"postgresql://neondb_owner:npg_tx8z5ueIYBJg@ep-still-brook-ay412lii-pooler.c-5.us-east-2.aws.neon.tech/neondb?sslmode=require&channel_binding=require"
   }
 }

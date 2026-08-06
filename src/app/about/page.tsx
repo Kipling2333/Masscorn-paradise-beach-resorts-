@@ -32,13 +32,13 @@ export default function AboutPage() {
   return (
     <div className="bg-ink pb-28">
       <section className="relative flex min-h-[70svh] items-end overflow-hidden">
-        <ParallaxImg src="/images/aerial.jpg" alt="Masscorn Paradise from above" className="absolute inset-0 h-full" speed={0.2} />
-        <div className="absolute inset-0 bg-gradient-to-b from-ink/55 via-ink/25 to-ink" />
+        <ParallaxImg src="https://i.ibb.co/kVz1rP66/hero.jpg" alt="Masscorn Paradise from above" className="absolute inset-0 h-full" speed={0.2} />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#1A1A1A]/60 via-[#1A1A1A]/30 to-ink" />
         <div className="relative mx-auto w-full max-w-[1500px] px-6 pb-16 md:px-10">
           <Reveal>
-            <span className="text-[11px] tracking-[0.4em] uppercase text-gold">Our Story</span>
-            <h1 className="mt-4 max-w-3xl font-display text-6xl font-light text-ivory md:text-8xl">
-              Built by island <span className="italic">hands & heart</span>
+            <span className="text-[11px] tracking-[0.4em] uppercase text-gold font-semibold">Our Story</span>
+            <h1 className="mt-4 max-w-3xl font-display text-6xl font-light text-ivory md:text-8xl drop-shadow-md">
+              Built by island <span className="italic text-gold">hands & heart</span>
             </h1>
           </Reveal>
         </div>
@@ -47,25 +47,27 @@ export default function AboutPage() {
       <section className="mx-auto mt-24 max-w-[1100px] px-6 md:px-10">
         <SectionHeading
           dark
-          eyebrow="Since 2011"
-          title={<>A dhow, a dream, <span className="italic text-gold">a bay</span></>}
+          eyebrow="Since 2026"
+          title={<>Where Luxury Meets the Ocean <span className="italic text-gold">a bay</span></>}
           sub=""
         />
         <Reveal>
-          <div className="mt-10 space-y-6 text-[15px] leading-[1.95] text-ivory/65">
+          <div className="mt-10 space-y-6 text-[15px] leading-[1.95] text-[#1A1A1A]/80 font-medium">
             <p>
-              In 2011, Zahra Masscorn sailed a borrowed dhow into this nameless bay and anchored for the night. By morning
-              she had decided the world needed a resort that asked less of the land and more of the heart. Village elders
-              named the bay <em className="text-gold not-italic">Masscorn</em> — “where the moon combs the water”.
+              At Masscorn Paradise Beach Resort, we believe every journey deserves an extraordinary destination. Nestled along a breathtaking coastline, our resort is designed for travelers seeking elegance, relaxation, and unforgettable experiences in one remarkable place.
+              
+              <em className="text-gold not-italic font-semibold"> Masscorn</em> — “where the moon combs the water”.
             </p>
             <p>
-              Fourteen years later, sixty-two residences rest between the palms, built by island craftsmen from coral rag,
-              makuti thatch and reclaimed dhow timber. Nothing here shouts; everything whispers. We remain, proudly,
-              a resort without a lobby — the entire bay is the lobby.
+              Inspired by the beauty of the sea and the warmth of genuine hospitality, Masscorn Paradise Beach Resort blends contemporary luxury with the timeless charm of tropical living. From our beautifully appointed accommodations and world-class dining to our wellness experiences and breathtaking sunsets, every detail has been thoughtfully crafted to create memories that last a lifetime.
+
+              Whether you're celebrating a honeymoon, enjoying a family vacation, hosting a destination wedding, planning a corporate retreat, or simply escaping the pace of everyday life, our dedicated team is committed to delivering exceptional service with warmth, professionalism, and care.
+
+              More than a place to stay, Masscorn Paradise Beach Resort is a destination where comfort meets sophistication, where nature inspires serenity, and where every guest is welcomed like family.
             </p>
           </div>
         </Reveal>
-        <div className="mt-16 grid grid-cols-2 gap-8 border-y border-ivory/10 py-10 md:grid-cols-4">
+        <div className="mt-16 grid grid-cols-2 gap-8 border-y border-[#1A1A1A]/15 py-10 md:grid-cols-4">
           {[
             { v: 14, s: " yrs", l: "Of quiet welcome" },
             { v: 212, s: "", l: "Island team members" },
@@ -74,8 +76,8 @@ export default function AboutPage() {
           ].map((s) => (
             <Reveal key={s.l}>
               <div className="text-center">
-                <div className="font-display text-5xl text-gold"><Counter to={s.v} suffix={s.s} /></div>
-                <div className="mt-2 text-[10px] tracking-[0.28em] uppercase text-ivory/45">{s.l}</div>
+                <div className="font-display text-5xl text-[#1A1A1A]"><Counter to={s.v} suffix={s.s} /></div>
+                <div className="mt-2 text-[10px] tracking-[0.28em] uppercase text-[#333333] font-semibold">{s.l}</div>
               </div>
             </Reveal>
           ))}
@@ -87,12 +89,12 @@ export default function AboutPage() {
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {TEAM.map((m, i) => (
             <Reveal key={m.n} delay={0.08 * i}>
-              <div className="glass-dark p-7 text-center">
-                <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-gold/40 font-display text-2xl text-gold">
+              <div className="glass-light p-7 text-center">
+                <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-gold/60 bg-[#1A1A1A] font-display text-2xl text-gold">
                   {m.i}
                 </div>
-                <div className="mt-5 font-display text-xl text-ivory">{m.n}</div>
-                <div className="mt-1 text-[10px] tracking-[0.28em] uppercase text-ivory/45">{m.r}</div>
+                <div className="mt-5 font-display text-xl text-[#1A1A1A]">{m.n}</div>
+                <div className="mt-1 text-[10px] tracking-[0.28em] uppercase text-[#333333] font-semibold">{m.r}</div>
               </div>
             </Reveal>
           ))}
@@ -106,10 +108,10 @@ export default function AboutPage() {
             <div className="mt-12 grid gap-6 sm:grid-cols-2">
               {PLEDGES.map((p, i) => (
                 <Reveal key={p.t} delay={0.07 * i}>
-                  <div className="glass-dark h-full p-6">
+                  <div className="glass-light h-full p-6">
                     <p.icon size={19} strokeWidth={1.1} className="text-gold" />
-                    <div className="mt-4 font-display text-xl text-ivory">{p.t}</div>
-                    <p className="mt-2 text-xs leading-relaxed text-ivory/55">{p.d}</p>
+                    <div className="mt-4 font-display text-xl text-[#1A1A1A]">{p.t}</div>
+                    <p className="mt-2 text-xs leading-relaxed text-[#333333]">{p.d}</p>
                   </div>
                 </Reveal>
               ))}
@@ -120,14 +122,14 @@ export default function AboutPage() {
             <div className="mt-12 space-y-5">
               {AWARDS.map((a, i) => (
                 <Reveal key={a} delay={0.07 * i}>
-                  <div className="flex items-center gap-4 border-b border-ivory/10 pb-5">
+                  <div className="flex items-center gap-4 border-b border-[#1A1A1A]/15 pb-5">
                     <Award size={18} strokeWidth={1.1} className="shrink-0 text-gold" />
-                    <span className="text-sm text-ivory/75">{a}</span>
+                    <span className="text-sm text-[#1A1A1A] font-medium">{a}</span>
                   </div>
                 </Reveal>
               ))}
               <Reveal delay={0.3}>
-                <div className="flex items-center gap-3 pt-2 text-xs text-ivory/40">
+                <div className="flex items-center gap-3 pt-2 text-xs text-[#333333] font-medium">
                   <Leaf size={14} className="text-gold" /> Every award funds one classroom on the island.
                 </div>
               </Reveal>

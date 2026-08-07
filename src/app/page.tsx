@@ -43,7 +43,7 @@ export default async function HomePage() {
     telephone: "+250792635047",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "Marshall highway, LIberia",
+      streetAddress: "Marshall highway, Liberia",
       addressRegion: "lower margibi",
       addressCountry: "Liberia",
     },
@@ -60,7 +60,6 @@ export default async function HomePage() {
 
       {/* ------------------------------- HERO ------------------------------- */}
       <section className="relative flex min-h-[100svh] flex-col justify-end overflow-hidden pt-28">
-        {/* Deep bottom gradient overlay ensuring ultra-sharp text readability */}
         <div className="absolute inset-0">
           <img src="https://i.ibb.co/tMR6Tm3m/hero.jpg" alt="Masscorn Paradise Beach Resort view" className="animate-kenburns h-full w-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0D0D0D] via-[#0D0D0D]/50 to-transparent" />
@@ -70,7 +69,7 @@ export default async function HomePage() {
           <Reveal delay={0.15}>
             <div className="flex items-center gap-4">
               <span className="hairline-gold w-16" />
-              <span className="text-[11px] tracking-[0.4em] uppercase text-[#FFF159] font-bold drop-shadow-md">A private sanctuary on the Indian Ocean</span>
+              <span className="text-[11px] tracking-[0.4em] uppercase text-[#FFF159] font-bold drop-shadow-md">A private sanctuary on the Atlantic Coast</span>
             </div>
           </Reveal>
           <Reveal delay={0.3}>
@@ -81,8 +80,7 @@ export default async function HomePage() {
           </Reveal>
           <Reveal delay={0.45}>
             <p className="mt-6 max-w-xl text-[15px] leading-relaxed text-[#F7F5F0] font-medium drop-shadow-[0_5px_15px_rgba(0,0,0,0.8)]">
-              Liberia's own, the beauty of nature ,people and culture 
-              mornings, ocean rituals and dinners beneath a thousand stars.
+              Liberia's own, the beauty of nature, people and culture — mornings, ocean rituals and dinners beneath a thousand stars.
             </p>
           </Reveal>
 
@@ -112,7 +110,7 @@ export default async function HomePage() {
         <div className="mx-auto grid max-w-[1500px] items-center gap-16 px-6 md:px-10 lg:grid-cols-2">
           <div className="relative">
             <Reveal>
-              <ParallaxImg src="https://ibb.co/G4w0sD7L" alt="Resort pools and palm gardens from above" className="aspect-[4/5] rounded-2xl" speed={0.16} />
+              <ParallaxImg src="https://i.ibb.co/tMR6Tm3m/hero.jpg" alt="Resort pools and palm gardens from above" className="aspect-[4/5] rounded-2xl" speed={0.16} />
             </Reveal>
           </div>
           <div>
@@ -206,10 +204,10 @@ export default async function HomePage() {
           </div>
           <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              { img: "https://ibb.co/hxJvTnyx", icon: Waves, t: "Sunset Shoreline Walks", d: "Champagne at golden hour along the private coastline." },
-              { img: "https://ibb.co/RGmnkhXH", icon: MapPin, t: "Sandbank Picnic", d: "A private chef on a vanishing island at low tide." },
-              { img: "https://ibb.co/mrpPX6mY", icon: ConciergeBell, t: "Reef Snorkel Safari", d: "Guided drift over our house reef with marine biologists." },
-              { img: "https://i.ibb.co/tMR6Tm3m", icon: UtensilsCrossed, t: "Chef's Table", d: "Seven courses where the lagoon meets the flame." },
+              { img: "https://i.ibb.co/hxJvTnyx/image.jpg", icon: Waves, t: "Sunset Shoreline Walks", d: "Champagne at golden hour along the private coastline." },
+              { img: "https://i.ibb.co/RGmnkhXH/image.jpg", icon: MapPin, t: "Sandbank Picnic", d: "A private chef on a vanishing island at low tide." },
+              { img: "https://i.ibb.co/mrpPX6mY/image.jpg", icon: ConciergeBell, t: "Reef Snorkel Safari", d: "Guided drift over our house reef with marine biologists." },
+              { img: "https://i.ibb.co/tMR6Tm3m/hero.jpg", icon: UtensilsCrossed, t: "Chef's Table", d: "Seven courses where the lagoon meets the flame." },
             ].map((x, i) => (
               <Reveal key={x.t} delay={0.1 * i}>
                 <Link href="/experiences" className="group relative block overflow-hidden rounded-2xl">

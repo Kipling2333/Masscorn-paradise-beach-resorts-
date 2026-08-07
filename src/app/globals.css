@@ -4,52 +4,35 @@
   --font-display: var(--font-cormorant), "Times New Roman", serif;
   --font-body: var(--font-jost), system-ui, sans-serif;
 
-  /* MASSCORN PARADISE BEACH RESORT - SUNNY VIBRANT YELLOW */
-  --color-ink: #FFF159;       /* Bright Resort Yellow Background */
-  --color-ink-deep: #E5D640;  /* Slightly deeper yellow shade */
+  /* ORIGINAL LUXURY PALETTE */
+  --color-ink: #0D0D0D;       /* Deep Resort Dark Background */
+  --color-ink-deep: #141414;  
 
-  --color-ivory: #1A1A1A;     /* Dark Charcoal Text for readability */
-  --color-sand: #333333;      /* Secondary Dark Text */
+  --color-ivory: #F7F5F0;     /* Soft Ivory Text */
+  --color-sand: #D4D2CD;      
 
   --color-gold: #C8A96B;      /* Luxury Gold */
-  --color-gold-soft: #D4A373; /* Warm Amber */
+  --color-gold-soft: #D4A373; 
 }
 
 @keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-33.333%);
-  }
+  from { transform: translateX(0); }
+  to { transform: translateX(-33.333%); }
 }
 
 @keyframes kenburns {
-  from {
-    transform: scale(1);
-  }
-  to {
-    transform: scale(1.12);
-  }
+  from { transform: scale(1); }
+  to { transform: scale(1.12); }
 }
 
 @keyframes floaty {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
 @keyframes shimmer {
-  from {
-    background-position: -200% center;
-  }
-  to {
-    background-position: 200% center;
-  }
+  from { background-position: -200% center; }
+  to { background-position: 200% center; }
 }
 
 html {
@@ -65,8 +48,8 @@ body {
 }
 
 ::selection {
-  background: #1A1A1A;
-  color: #FFF159;
+  background: #C8A96B;
+  color: #0D0D0D;
 }
 
 ::-webkit-scrollbar {
@@ -74,20 +57,12 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #E5D640;
+  background: #141414;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1A1A1A;
-  border-radius: 8px;
-}
-
-::-webkit-scrollbar-thumb:hover {
   background: #C8A96B;
-}
-
-input[type="date"] {
-  color-scheme: light;
+  border-radius: 8px;
 }
 
 /* ==========================================
@@ -99,51 +74,21 @@ input[type="date"] {
   align-items: center;
   justify-content: center;
   gap: 0.6rem;
-
-  background: #1A1A1A;
-  color: #FFF159;
-
+  background: #C8A96B;
+  color: #0D0D0D;
   padding: 0.7rem 1.6rem;
-
   font-size: 11px;
   letter-spacing: 0.28em;
   text-transform: uppercase;
   font-weight: 500;
-
   transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-
-  box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 10px 30px -12px rgba(200, 169, 107, 0.3);
 }
 
 .btn-gold:hover {
-  background: #C8A96B;
-  color: #1A1A1A;
+  background: #F7F5F0;
+  color: #0D0D0D;
   transform: translateY(-2px);
-}
-
-.btn-ink {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.6rem;
-
-  background: #FFF159;
-  color: #1A1A1A;
-  border: 1px solid #1A1A1A;
-
-  padding: 0.7rem 1.6rem;
-
-  font-size: 11px;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  font-weight: 500;
-
-  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.btn-ink:hover {
-  background: #1A1A1A;
-  color: #FFF159;
 }
 
 .btn-ghost {
@@ -151,22 +96,18 @@ input[type="date"] {
   align-items: center;
   justify-content: center;
   gap: 0.6rem;
-
-  border: 1px solid rgba(26, 26, 26, 0.3);
-  color: #1A1A1A;
-
+  border: 1px solid rgba(200, 169, 107, 0.3);
+  color: #F7F5F0;
   padding: 0.7rem 1.6rem;
-
   font-size: 11px;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-
   transition: all 0.4s;
 }
 
 .btn-ghost:hover {
-  border-color: #1A1A1A;
-  background: rgba(26, 26, 26, 0.05);
+  border-color: #C8A96B;
+  background: rgba(200, 169, 107, 0.08);
 }
 
 /* ==========================================
@@ -174,63 +115,34 @@ input[type="date"] {
 ========================================== */
 
 .glass-dark {
-  background: rgba(255, 255, 255, 0.65);
+  background: rgba(13, 13, 13, 0.75);
   backdrop-filter: blur(22px) saturate(140%);
   -webkit-backdrop-filter: blur(22px) saturate(140%);
-  border: 1px solid rgba(26, 26, 26, 0.12);
+  border: 1px solid rgba(200, 169, 107, 0.15);
   border-radius: 1rem;
 }
 
 .glass-light {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(247, 245, 240, 0.05);
   backdrop-filter: blur(20px) saturate(150%);
   -webkit-backdrop-filter: blur(20px) saturate(150%);
-  border: 1px solid rgba(26, 26, 26, 0.08);
+  border: 1px solid rgba(200, 169, 107, 0.12);
   border-radius: 1rem;
-  box-shadow: 0 24px 60px -32px rgba(0, 0, 0, 0.15);
 }
 
 /* ==========================================
-    TEXT EFFECTS
+    TEXT EFFECTS & ANIMATIONS
 ========================================== */
 
 .text-shimmer {
-  background: linear-gradient(
-    110deg,
-    #1A1A1A 20%,
-    #C8A96B 45%,
-    #1A1A1A 70%
-  );
-
+  background: linear-gradient(110deg, #F7F5F0 20%, #C8A96B 45%, #F7F5F0 70%);
   background-size: 200% auto;
-
   -webkit-background-clip: text;
   background-clip: text;
-
   color: transparent;
-
   animation: shimmer 5s linear infinite;
 }
 
-.hairline-gold {
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(26, 26, 26, 0.3),
-    transparent
-  );
-
-  height: 1px;
-}
-
-.animate-marquee {
-  animation: marquee 36s linear infinite;
-}
-
-.animate-kenburns {
-  animation: kenburns 18s ease-in-out infinite alternate;
-}
-
-.animate-floaty {
-  animation: floaty 7s ease-in-out infinite;
-}
+.animate-marquee { animation: marquee 36s linear infinite; }
+.animate-kenburns { animation: kenburns 18s ease-in-out infinite alternate; }
+.animate-floaty { animation: floaty 7s ease-in-out infinite; }

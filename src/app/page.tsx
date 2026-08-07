@@ -206,10 +206,10 @@ export default async function HomePage() {
           </div>
           <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              { img: "https://ibb.co/hxJvTnyx/hero.jpg", icon: Waves, t: "Sunset Shoreline Walks", d: "Champagne at golden hour along the private coastline." },
-              { img: "https://ibb.co/RGmnkhXH/hero.jpg", icon: MapPin, t: "Sandbank Picnic", d: "A private chef on a vanishing island at low tide." },
-              { img: "https://ibb.co/mrpPX6mY/hero.jpg", icon: ConciergeBell, t: "Reef Snorkel Safari", d: "Guided drift over our house reef with marine biologists." },
-              { img: "https://i.ibb.co/tMR6Tm3m/hero.jpg", icon: UtensilsCrossed, t: "Chef's Table", d: "Seven courses where the lagoon meets the flame." },
+              { img: "https://ibb.co/hxJvTnyx", icon: Waves, t: "Sunset Shoreline Walks", d: "Champagne at golden hour along the private coastline." },
+              { img: "https://ibb.co/RGmnkhXH", icon: MapPin, t: "Sandbank Picnic", d: "A private chef on a vanishing island at low tide." },
+              { img: "https://ibb.co/mrpPX6mY", icon: ConciergeBell, t: "Reef Snorkel Safari", d: "Guided drift over our house reef with marine biologists." },
+              { img: "https://i.ibb.co/tMR6Tm3m", icon: UtensilsCrossed, t: "Chef's Table", d: "Seven courses where the lagoon meets the flame." },
             ].map((x, i) => (
               <Reveal key={x.t} delay={0.1 * i}>
                 <Link href="/experiences" className="group relative block overflow-hidden rounded-2xl">

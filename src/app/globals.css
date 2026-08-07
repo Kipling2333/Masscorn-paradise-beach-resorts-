@@ -4,15 +4,16 @@
   --font-display: var(--font-cormorant), "Times New Roman", serif;
   --font-body: var(--font-jost), system-ui, sans-serif;
 
-  /* ORIGINAL LUXURY PALETTE */
-  --color-ink: #0D0D0D;       /* Deep Resort Dark Background */
-  --color-ink-deep: #141414;  
+  /* SUNNY VIBRANT YELLOW BACKGROUND PREFERRED BY CLIENT */
+  --color-ink: #FFF159;       
+  --color-ink-deep: #E5D640;  
 
-  --color-ivory: #F7F5F0;     /* Soft Ivory Text */
-  --color-sand: #D4D2CD;      
+  /* HIGH-CONTRAST CLEAR TEXT COLORS (No hard-to-read black on yellow) */
+  --color-ivory: #111111;     /* Rich Dark Charcoal for sharp clarity */
+  --color-sand: #2C2C2C;      /* Deep Secondary Text */
 
-  --color-gold: #C8A96B;      /* Luxury Gold */
-  --color-gold-soft: #D4A373; 
+  --color-gold: #8B6508;      /* Deep Luxury Gold for high contrast */
+  --color-gold-soft: #A67C1E; 
 }
 
 @keyframes marquee {
@@ -43,13 +44,13 @@ body {
   background: var(--color-ink);
   color: var(--color-ivory);
   font-family: var(--font-body);
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: 0.01em;
 }
 
 ::selection {
-  background: #C8A96B;
-  color: #0D0D0D;
+  background: #111111;
+  color: #FFF159;
 }
 
 ::-webkit-scrollbar {
@@ -57,16 +58,16 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #141414;
+  background: #E5D640;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #C8A96B;
+  background: #111111;
   border-radius: 8px;
 }
 
 /* ==========================================
-    LUXURY BUTTONS
+    HIGH-CONTRAST LUXURY BUTTONS
 ========================================== */
 
 .btn-gold {
@@ -74,21 +75,42 @@ body {
   align-items: center;
   justify-content: center;
   gap: 0.6rem;
-  background: #C8A96B;
-  color: #0D0D0D;
+  background: #111111;
+  color: #FFF159;
   padding: 0.7rem 1.6rem;
   font-size: 11px;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  font-weight: 500;
+  font-weight: 600;
   transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-  box-shadow: 0 10px 30px -12px rgba(200, 169, 107, 0.3);
+  box-shadow: 0 10px 30px -12px rgba(17, 17, 17, 0.3);
 }
 
 .btn-gold:hover {
-  background: #F7F5F0;
-  color: #0D0D0D;
+  background: #8B6508;
+  color: #FFF159;
   transform: translateY(-2px);
+}
+
+.btn-ink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background: #FFF159;
+  color: #111111;
+  border: 1.5px solid #111111;
+  padding: 0.7rem 1.6rem;
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-weight: 600;
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.btn-ink:hover {
+  background: #111111;
+  color: #FFF159;
 }
 
 .btn-ghost {
@@ -96,18 +118,19 @@ body {
   align-items: center;
   justify-content: center;
   gap: 0.6rem;
-  border: 1px solid rgba(200, 169, 107, 0.3);
-  color: #F7F5F0;
+  border: 1.5px solid rgba(17, 17, 17, 0.4);
+  color: #111111;
   padding: 0.7rem 1.6rem;
   font-size: 11px;
   letter-spacing: 0.28em;
   text-transform: uppercase;
+  font-weight: 600;
   transition: all 0.4s;
 }
 
 .btn-ghost:hover {
-  border-color: #C8A96B;
-  background: rgba(200, 169, 107, 0.08);
+  border-color: #111111;
+  background: rgba(17, 17, 17, 0.08);
 }
 
 /* ==========================================
@@ -115,19 +138,20 @@ body {
 ========================================== */
 
 .glass-dark {
-  background: rgba(13, 13, 13, 0.75);
+  background: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(22px) saturate(140%);
   -webkit-backdrop-filter: blur(22px) saturate(140%);
-  border: 1px solid rgba(200, 169, 107, 0.15);
+  border: 1.5px solid rgba(17, 17, 17, 0.15);
   border-radius: 1rem;
 }
 
 .glass-light {
-  background: rgba(247, 245, 240, 0.05);
+  background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(20px) saturate(150%);
   -webkit-backdrop-filter: blur(20px) saturate(150%);
-  border: 1px solid rgba(200, 169, 107, 0.12);
+  border: 1.5px solid rgba(17, 17, 17, 0.1);
   border-radius: 1rem;
+  box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.1);
 }
 
 /* ==========================================
@@ -135,12 +159,17 @@ body {
 ========================================== */
 
 .text-shimmer {
-  background: linear-gradient(110deg, #F7F5F0 20%, #C8A96B 45%, #F7F5F0 70%);
+  background: linear-gradient(110deg, #111111 20%, #8B6508 45%, #111111 70%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   animation: shimmer 5s linear infinite;
+}
+
+.hairline-gold {
+  background: linear-gradient(90deg, transparent, rgba(17, 17, 17, 0.3), transparent);
+  height: 1px;
 }
 
 .animate-marquee { animation: marquee 36s linear infinite; }

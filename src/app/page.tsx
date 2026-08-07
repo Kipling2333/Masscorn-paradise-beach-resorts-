@@ -40,12 +40,12 @@ export default async function HomePage() {
     url: "https://masscorn-paradise.vercel.app",
     image: "https://i.ibb.co/tMR6Tm3m/hero.jpg",
     priceRange: "$$$$",
-    telephone: "+255774000100",
+    telephone: "+250792635047",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "Masscorn Bay, Paje Coast",
-      addressRegion: "Zanzibar",
-      addressCountry: "TZ",
+      streetAddress: "Marshall highway, LIberia",
+      addressRegion: "lower margibi",
+      addressCountry: "Liberia",
     },
     amenityFeature: [
       { "@type": "LocationFeatureSpecification", name: "Private Beach" },
@@ -75,13 +75,13 @@ export default async function HomePage() {
           </Reveal>
           <Reveal delay={0.3}>
             <h1 className="mt-6 max-w-4xl font-display text-[13vw] font-light leading-[0.98] text-[#F7F5F0] drop-shadow-[0_10px_20px_rgba(0,0,0,0.8)] sm:text-7xl md:text-8xl">
-              Where the horizon
-              <span className="block italic text-[#FFF159] drop-shadow-md">becomes your own</span>
+              Where Luxury Meet The Ocean
+              <span className="block italic text-[#FFF159] drop-shadow-md">Masscorn Paradise Beach Resort</span>
             </h1>
           </Reveal>
           <Reveal delay={0.45}>
             <p className="mt-6 max-w-xl text-[15px] leading-relaxed text-[#F7F5F0] font-medium drop-shadow-[0_5px_15px_rgba(0,0,0,0.8)]">
-              Sixty-two residences and villas drift along 2.4 kilometres of private ivory sand — a world of quiet
+              Liberia's own, the beauty of nature ,people and culture 
               mornings, ocean rituals and dinners beneath a thousand stars.
             </p>
           </Reveal>
@@ -112,7 +112,7 @@ export default async function HomePage() {
         <div className="mx-auto grid max-w-[1500px] items-center gap-16 px-6 md:px-10 lg:grid-cols-2">
           <div className="relative">
             <Reveal>
-              <ParallaxImg src="https://i.ibb.co/tMR6Tm3m/hero.jpg" alt="Resort pools and palm gardens from above" className="aspect-[4/5] rounded-2xl" speed={0.16} />
+              <ParallaxImg src="https://ibb.co/G4w0sD7L" alt="Resort pools and palm gardens from above" className="aspect-[4/5] rounded-2xl" speed={0.16} />
             </Reveal>
           </div>
           <div>
@@ -120,7 +120,7 @@ export default async function HomePage() {
               align="left"
               index="01"
               eyebrow="The Resort"
-              title={<>Barefoot luxury, <span className="italic text-gold">redefined</span></>}
+              title={<>Masscorn luxury, <span className="italic text-gold">redefined</span></>}
               sub="Conceived as a village of light and shade, Masscorn Paradise gathers teak pavilions, lagoon pools and hidden courtyards around a crescent of untouched coral sand. Every residence faces the water; every hour bends to your rhythm."
             />
             <Reveal delay={0.25}>
@@ -206,9 +206,9 @@ export default async function HomePage() {
           </div>
           <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              { img: "https://i.ibb.co/tMR6Tm3m/hero.jpg", icon: Waves, t: "Sunset Shoreline Walks", d: "Champagne at golden hour along the private coastline." },
-              { img: "https://i.ibb.co/tMR6Tm3m/hero.jpg", icon: MapPin, t: "Sandbank Picnic", d: "A private chef on a vanishing island at low tide." },
-              { img: "https://i.ibb.co/tMR6Tm3m/hero.jpg", icon: ConciergeBell, t: "Reef Snorkel Safari", d: "Guided drift over our house reef with marine biologists." },
+              { img: "https://ibb.co/hxJvTnyx/hero.jpg", icon: Waves, t: "Sunset Shoreline Walks", d: "Champagne at golden hour along the private coastline." },
+              { img: "https://ibb.co/RGmnkhXH/hero.jpg", icon: MapPin, t: "Sandbank Picnic", d: "A private chef on a vanishing island at low tide." },
+              { img: "https://ibb.co/mrpPX6mY/hero.jpg", icon: ConciergeBell, t: "Reef Snorkel Safari", d: "Guided drift over our house reef with marine biologists." },
               { img: "https://i.ibb.co/tMR6Tm3m/hero.jpg", icon: UtensilsCrossed, t: "Chef's Table", d: "Seven courses where the lagoon meets the flame." },
             ].map((x, i) => (
               <Reveal key={x.t} delay={0.1 * i}>

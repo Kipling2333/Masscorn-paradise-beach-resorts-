@@ -60,27 +60,27 @@ export default async function HomePage() {
 
       {/* ------------------------------- HERO ------------------------------- */}
       <section className="relative flex min-h-[100svh] flex-col justify-end overflow-hidden pt-28">
-        {/* Solid / Darker gradient overlay behind header & hero for high readability */}
+        {/* Deep bottom gradient overlay ensuring ultra-sharp text readability */}
         <div className="absolute inset-0">
           <img src="https://i.ibb.co/tMR6Tm3m/hero.jpg" alt="Masscorn Paradise Beach Resort view" className="animate-kenburns h-full w-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-b from-ink/90 via-ink/40 to-ink" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0D0D0D] via-[#0D0D0D]/50 to-transparent" />
         </div>
 
         <div className="relative mx-auto w-full max-w-[1500px] px-6 pb-10 pt-16 md:px-10">
           <Reveal delay={0.15}>
             <div className="flex items-center gap-4">
               <span className="hairline-gold w-16" />
-              <span className="text-[11px] tracking-[0.4em] uppercase text-gold">A private sanctuary on the Indian Ocean</span>
+              <span className="text-[11px] tracking-[0.4em] uppercase text-[#FFF159] font-bold drop-shadow-md">A private sanctuary on the Indian Ocean</span>
             </div>
           </Reveal>
           <Reveal delay={0.3}>
-            <h1 className="mt-6 max-w-4xl font-display text-[13vw] font-light leading-[0.98] text-ivory drop-shadow-md sm:text-7xl md:text-8xl">
+            <h1 className="mt-6 max-w-4xl font-display text-[13vw] font-light leading-[0.98] text-[#F7F5F0] drop-shadow-[0_10px_20px_rgba(0,0,0,0.8)] sm:text-7xl md:text-8xl">
               Where the horizon
-              <span className="block italic text-shimmer">becomes your own</span>
+              <span className="block italic text-[#FFF159] drop-shadow-md">becomes your own</span>
             </h1>
           </Reveal>
           <Reveal delay={0.45}>
-            <p className="mt-6 max-w-xl text-[15px] leading-relaxed text-ivory/90 drop-shadow">
+            <p className="mt-6 max-w-xl text-[15px] leading-relaxed text-[#F7F5F0] font-medium drop-shadow-[0_5px_15px_rgba(0,0,0,0.8)]">
               Sixty-two residences and villas drift along 2.4 kilometres of private ivory sand — a world of quiet
               mornings, ocean rituals and dinners beneath a thousand stars.
             </p>
@@ -95,10 +95,10 @@ export default async function HomePage() {
               <WeatherWidget />
             </Reveal>
             <Reveal delay={0.85} className="hidden md:block">
-              <div className="flex items-center gap-8 text-[10px] tracking-[0.3em] uppercase text-ivory/60">
-                <span className="flex items-center gap-2"><Award size={13} className="text-gold" /> World Travel Awards 2025</span>
-                <span className="flex items-center gap-2"><Leaf size={13} className="text-gold" /> EarthCheck Platinum</span>
-                <span className="flex items-center gap-2"><ShieldCheck size={13} className="text-gold" /> Forbes Five-Star</span>
+              <div className="flex items-center gap-8 text-[10px] tracking-[0.3em] uppercase text-[#F7F5F0]/80">
+                <span className="flex items-center gap-2"><Award size={13} className="text-[#FFF159]" /> World Travel Awards 2025</span>
+                <span className="flex items-center gap-2"><Leaf size={13} className="text-[#FFF159]" /> EarthCheck Platinum</span>
+                <span className="flex items-center gap-2"><ShieldCheck size={13} className="text-[#FFF159]" /> Forbes Five-Star</span>
               </div>
             </Reveal>
           </div>

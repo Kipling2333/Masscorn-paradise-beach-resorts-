@@ -11,6 +11,7 @@ import {
   jsonb,
   index,
   uniqueIndex,
+  uuid,
 } from "drizzle-orm/pg-core";
 
 /* ---------------------------------- users ---------------------------------- */
@@ -254,4 +255,23 @@ export const notifications = pgTable("notifications", {
   body: text("body").notNull(),
   status: varchar("status", { length: 20 }).notNull().default("sent"),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+});
+
+/* --------------------------------- CMS ------------------------------------ */
+
+export const resortContent = pgTable("resort_content", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  sectionKey: varchar("section_key", { length: 100 }).notNull().unique(),
+  title: varchar("title", { length: 255 }).notNull(),
+  bodyHtml: text("body_html").notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+});
+
+export const mediaGallery = pgTable("media_gallery", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  imageUrl: text("image_url").notNull(),
+  publicId: varchar("public_id", { length: 255 }).notNull(),
+  title: varchar("title", { length: 255 }),
+  category: varchar("category", { length: 50 }).default("general"),
+  uploadedAt: timestamp("uploaded_at").defaultNow().notNull(),
 });

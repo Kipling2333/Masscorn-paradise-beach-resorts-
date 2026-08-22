@@ -10,12 +10,18 @@
     "db:push": "drizzle-kit push"
   },
   "dependencies": {
-    "dotenv": "17.3.1",
+    "@neondatabase/serverless": "^1.1.0",
+    "bcryptjs": "^3.0.3",
+    "cloudinary": "^2.10.1",
+    "dotenv": "^17.3.1",
     "drizzle-orm": "0.45.2",
+    "express": "^5.2.1",
     "framer-motion": "^12.43.0",
+    "jsonwebtoken": "^9.0.3",
     "lucide-react": "^1.28.0",
+    "multer": "^2.2.0",
     "next": "16.2.6",
-    "pg": "8.20.0",
+    "pg": "^8.20.0",
     "react": "19.2.6",
     "react-dom": "19.2.6"
   },

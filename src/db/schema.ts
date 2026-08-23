@@ -42,7 +42,40 @@ export const roomTypes = pgTable("room_types", {
   createdAt: timestamp("created_at").defaultNow(),
 });
 
-// 4. Reviews / Guest Feedback
+// 4. Physical Rooms Inventory
+export const rooms = pgTable("rooms", {
+  id: serial("id").primaryKey(),
+  roomTypeId: integer("room_type_id").notNull(),
+  roomNumber: text("room_number").notNull(),
+  status: text("status").notNull().default("active"), // active, maintenance
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+// 5. Bookings
+export const bookings = pgTable("bookings", {
+  id: serial("id").primaryKey(),
+  roomTypeId: integer("room_type_id").notNull(),
+  userId: integer("user_id"),
+  guestName: text("guest_name"),
+  guestEmail: text("guest_email"),
+  checkIn: text("check_in").notNull(),
+  checkOut: text("check_out").notNull(),
+  roomsCount: integer("rooms_count").notNull().default(1),
+  status: text("status").notNull().default("confirmed"), // confirmed, pending, cancelled
+  totalPrice: integer("total_price"),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+// 6. Coupons
+export const coupons = pgTable("coupons", {
+  id: serial("id").primaryKey(),
+  code: text("code").notNull().unique(),
+  discountPct: integer("discount_pct").notNull(),
+  active: boolean("active").notNull().default(true),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+// 7. Reviews / Guest Feedback
 export const reviews = pgTable("reviews", {
   id: serial("id").primaryKey(),
   author: text("author").notNull().default("Guest"),
@@ -57,7 +90,7 @@ export const reviews = pgTable("reviews", {
   createdAt: timestamp("created_at").defaultNow(),
 });
 
-// 5. Users
+// 8. Users
 export const users = pgTable("users", {
   id: serial("id").primaryKey(),
   username: text("username"),

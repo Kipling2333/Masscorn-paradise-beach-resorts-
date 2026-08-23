@@ -3,7 +3,7 @@ import { db } from "@/db";
 import { bookings, coupons, rooms } from "@/db/schema";
 import { and, eq, gte, lt, ne, sql } from "drizzle-orm";
 
-/** Seasonal rate multiplier — peak (Dec–Feb, Jul–Aug), shoulder (Mar–May, Sep), low (Oct–Nov, Jun). */
+/** Seasonal rate multiplier - peak (Dec-Feb, Jul-Aug), shoulder (Mar-May, Sep), low (Oct-Nov, Jun). */
 export function seasonalMultiplier(date: Date): number {
   const m = date.getMonth(); // 0-based
   if (m === 11 || m === 0 || m === 1 || m === 6 || m === 7) return 1.25;

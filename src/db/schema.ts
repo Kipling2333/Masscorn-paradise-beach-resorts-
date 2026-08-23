@@ -47,7 +47,7 @@ export const rooms = pgTable("rooms", {
   id: serial("id").primaryKey(),
   roomTypeId: integer("room_type_id").notNull(),
   roomNumber: text("room_number").notNull(),
-  status: text("status").notNull().default("active"), // active, maintenance
+  status: text("status").notNull().default("active"),
   createdAt: timestamp("created_at").defaultNow(),
 });
 
@@ -61,7 +61,7 @@ export const bookings = pgTable("bookings", {
   checkIn: text("check_in").notNull(),
   checkOut: text("check_out").notNull(),
   roomsCount: integer("rooms_count").notNull().default(1),
-  status: text("status").notNull().default("confirmed"), // confirmed, pending, cancelled
+  status: text("status").notNull().default("confirmed"),
   totalPrice: integer("total_price"),
   createdAt: timestamp("created_at").defaultNow(),
 });
@@ -75,7 +75,37 @@ export const coupons = pgTable("coupons", {
   createdAt: timestamp("created_at").defaultNow(),
 });
 
-// 7. Reviews / Guest Feedback
+// 7. Concierge Requests
+export const conciergeRequests = pgTable("concierge_requests", {
+  id: serial("id").primaryKey(),
+  userId: integer("user_id"),
+  guestName: text("guest_name"),
+  requestType: text("request_type").notNull(),
+  details: text("details"),
+  status: text("status").default("pending"),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+// 8. Spa Services & Bookings
+export const spaServices = pgTable("spa_services", {
+  id: serial("id").primaryKey(),
+  name: text("name").notNull(),
+  description: text("description"),
+  price: integer("price").notNull(),
+  durationMinutes: integer("duration_minutes").default(60),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+export const spaBookings = pgTable("spa_bookings", {
+  id: serial("id").primaryKey(),
+  serviceId: integer("service_id").notNull(),
+  userId: integer("user_id"),
+  bookingDate: text("booking_date").notNull(),
+  status: text("status").default("confirmed"),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+// 9. Reviews / Guest Feedback
 export const reviews = pgTable("reviews", {
   id: serial("id").primaryKey(),
   author: text("author").notNull().default("Guest"),
@@ -90,7 +120,7 @@ export const reviews = pgTable("reviews", {
   createdAt: timestamp("created_at").defaultNow(),
 });
 
-// 8. Users
+// 10. Users
 export const users = pgTable("users", {
   id: serial("id").primaryKey(),
   username: text("username"),

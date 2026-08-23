@@ -55,7 +55,7 @@ export default function AdminContentPage() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Upload failed");
 
-      setMessage("Image uploaded successfully!");
+      setMessage(data.message || "Image uploaded successfully!");
       setTitle("");
       setFile(null);
       fetchImages();

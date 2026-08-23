@@ -71,42 +71,42 @@ export default function AdminContentPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-100 pt-32 pb-16 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-5xl mx-auto space-y-10">
+    <div className="w-full min-h-screen bg-[#F7F4E9] text-slate-900 pt-36 pb-24 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-5xl mx-auto space-y-12">
         
-        {/* Upload Form */}
-        <div className="bg-white p-6 sm:p-8 rounded-xl shadow-sm border border-slate-200">
+        {/* Upload Form Box */}
+        <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
           <h1 className="text-2xl font-bold text-slate-800 mb-6">Upload Gallery Image</h1>
 
-          <form onSubmit={handleUpload} className="space-y-4">
+          <form onSubmit={handleUpload} className="space-y-5">
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">Select Image File</label>
+              <label className="block text-sm font-semibold text-slate-700 mb-2">Select Image File</label>
               <input
                 type="file"
                 accept="image/*"
                 onChange={(e) => setFile(e.target.files?.[0] || null)}
-                className="w-full border border-slate-300 p-2 rounded-lg bg-white"
+                className="w-full border border-slate-300 p-3 rounded-lg bg-slate-50 text-sm"
                 required
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">Image Title</label>
+              <label className="block text-sm font-semibold text-slate-700 mb-2">Image Title</label>
               <input
                 type="text"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 placeholder="e.g. Ocean View Sunset"
-                className="w-full border border-slate-300 p-2 rounded-lg"
+                className="w-full border border-slate-300 p-3 rounded-lg text-sm"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">Category</label>
+              <label className="block text-sm font-semibold text-slate-700 mb-2">Category</label>
               <select
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
-                className="w-full border border-slate-300 p-2 rounded-lg bg-white"
+                className="w-full border border-slate-300 p-3 rounded-lg bg-slate-50 text-sm"
               >
                 <option value="Rooms">Rooms</option>
                 <option value="Dining">Dining</option>
@@ -118,38 +118,38 @@ export default function AdminContentPage() {
             <button
               type="submit"
               disabled={uploading}
-              className="bg-amber-600 text-white px-5 py-2.5 rounded-lg font-medium hover:bg-amber-700 disabled:opacity-50 transition"
+              className="bg-amber-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-amber-700 disabled:opacity-50 transition"
             >
               {uploading ? "Uploading..." : "Upload to Gallery"}
             </button>
 
-            {message && <p className="text-sm text-emerald-600 font-medium mt-2">{message}</p>}
+            {message && <p className="text-sm text-emerald-600 font-semibold mt-2">{message}</p>}
           </form>
         </div>
 
-        {/* Live Gallery Items Grid */}
-        <div className="bg-white p-6 sm:p-8 rounded-xl shadow-sm border border-slate-200">
-          <div className="flex items-center justify-between mb-6">
+        {/* Gallery Grid Section */}
+        <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
+          <div className="flex items-center justify-between mb-6 border-b pb-4">
             <h2 className="text-xl font-bold text-slate-800">
-              Uploaded Gallery Items ({images.length})
+              Current Gallery Images ({images.length})
             </h2>
             <button 
               onClick={fetchImages}
               type="button"
-              className="text-xs text-amber-600 font-semibold hover:underline"
+              className="text-xs text-amber-600 font-bold hover:underline uppercase tracking-wider"
             >
               Refresh List
             </button>
           </div>
 
           {images.length === 0 ? (
-            <p className="text-slate-500 text-sm">No uploaded images found in database.</p>
+            <p className="text-slate-500 text-sm py-4">No uploaded images found in database.</p>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
               {images.map((item) => {
                 const src = item.imageUrl || item.image_url;
                 return (
-                  <div key={item.id} className="border border-slate-200 rounded-lg overflow-hidden bg-slate-50 shadow-sm flex flex-col">
+                  <div key={item.id} className="border border-slate-200 rounded-xl overflow-hidden bg-slate-50 shadow-sm flex flex-col">
                     {src ? (
                       <img
                         src={src}
@@ -158,14 +158,14 @@ export default function AdminContentPage() {
                       />
                     ) : (
                       <div className="w-full h-48 bg-slate-200 flex items-center justify-center text-slate-400 text-xs">
-                        Missing Image URL
+                        No Image Source
                       </div>
                     )}
-                    <div className="p-4 flex-1 flex flex-col justify-between">
+                    <div className="p-4 flex-1 flex flex-col justify-between bg-white">
                       <p className="font-semibold text-slate-800 text-sm truncate">
                         {item.title || "Untitled Image"}
                       </p>
-                      <span className="text-xs font-semibold text-amber-600 uppercase tracking-wider mt-2">
+                      <span className="text-xs font-bold text-amber-600 uppercase tracking-wider mt-2 block">
                         {item.category || "General"}
                       </span>
                     </div>

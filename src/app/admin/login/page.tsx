@@ -19,11 +19,19 @@ export default function AdminLoginPage() {
       const res = await fetch("/api/auth", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ 
+          action: "login", 
+          email, 
+          password 
+        }),
       });
 
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Login failed");
+
+      if (data.user?.role !== "admin") {
+        throw new Error("Access denied. Admin privileges required.");
+      }
 
       // Redirect to Admin CMS Dashboard upon successful authentication
       router.push("/admin/content");

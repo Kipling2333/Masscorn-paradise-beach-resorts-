@@ -14,13 +14,13 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "No file uploaded" }, { status: 400 });
     }
 
-    // Upload directly to Vercel Blob CDN
+    // 1. Upload file directly to Vercel Blob CDN
     const blob = await put(`gallery/${Date.now()}-${file.name}`, file, {
       access: "public",
     });
 
-    // Save permanent CDN URL to Neon DB
-    const newImage = await db
+    // 2. Insert Vercel Blob URL directly into Neon Database
+    const [newImage] = await db
       .insert(mediaGallery)
       .values({
         imageUrl: blob.url,
@@ -30,7 +30,7 @@ export async function POST(req: Request) {
       })
       .returning();
 
-    return NextResponse.json({ message: "Image uploaded permanently!", image: newImage[0] });
+    return NextResponse.json({ message: "Image uploaded to Vercel Blob!", image: newImage });
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }

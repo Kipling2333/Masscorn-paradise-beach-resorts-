@@ -7,6 +7,7 @@ export const mediaGallery = pgTable("media_gallery", {
   publicId: text("public_id"),
   title: text("title"),
   category: text("category").default("general"),
+  uploadedAt: timestamp("uploaded_at").defaultNow(),
   createdAt: timestamp("created_at").defaultNow(),
 });
 
@@ -68,5 +69,6 @@ export const users = pgTable("users", {
   loyaltyTier: text("loyalty_tier").default("Member"),
   loyaltyPoints: integer("loyalty_points").default(0),
   preferredLanguage: text("preferred_language").default("en"),
+  preferences: text("preferences"),
   createdAt: timestamp("created_at").defaultNow(),
 });

@@ -84,7 +84,8 @@ export async function POST(req: Request) {
       const rows = await db.select().from(users).where(eq(sql`lower(${users.email})`, email)).limit(1);
       const user = rows[0];
       
-      if (!user || !verifyPassword(password, user.passwordHash)) {
+      // Fixed: Added `user.passwordHash ?? ""` to prevent passing null to verifyPassword
+      if (!user || !verifyPassword(password, user.passwordHash ?? "")) {
         return NextResponse.json({ error: "Email or password is incorrect." }, { status: 401 });
       }
       

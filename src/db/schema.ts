@@ -120,7 +120,16 @@ export const reviews = pgTable("reviews", {
   createdAt: timestamp("created_at").defaultNow(),
 });
 
-// 10. Users
+// 10. Sessions
+export const sessions = pgTable("sessions", {
+  id: serial("id").primaryKey(),
+  token: text("token").notNull().unique(),
+  userId: integer("user_id").notNull(),
+  expiresAt: timestamp("expires_at").notNull(),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+// 11. Users
 export const users = pgTable("users", {
   id: serial("id").primaryKey(),
   username: text("username"),

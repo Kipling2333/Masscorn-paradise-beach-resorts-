@@ -66,7 +66,31 @@ export const bookings = pgTable("bookings", {
   createdAt: timestamp("created_at").defaultNow(),
 });
 
-// 6. Coupons
+// 6. Payments
+export const payments = pgTable("payments", {
+  id: serial("id").primaryKey(),
+  bookingId: integer("booking_id"),
+  userId: integer("user_id"),
+  amount: integer("amount").notNull(),
+  currency: text("currency").default("USD"),
+  status: text("status").default("completed"),
+  provider: text("provider").default("flutterwave"),
+  transactionRef: text("transaction_ref"),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+// 7. Notifications
+export const notifications = pgTable("notifications", {
+  id: serial("id").primaryKey(),
+  userId: integer("user_id"),
+  title: text("title").notNull(),
+  message: text("message").notNull(),
+  read: boolean("read").default(false),
+  type: text("type").default("info"),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+// 8. Coupons
 export const coupons = pgTable("coupons", {
   id: serial("id").primaryKey(),
   code: text("code").notNull().unique(),
@@ -75,7 +99,7 @@ export const coupons = pgTable("coupons", {
   createdAt: timestamp("created_at").defaultNow(),
 });
 
-// 7. Concierge Requests
+// 9. Concierge Requests
 export const conciergeRequests = pgTable("concierge_requests", {
   id: serial("id").primaryKey(),
   userId: integer("user_id"),
@@ -86,7 +110,7 @@ export const conciergeRequests = pgTable("concierge_requests", {
   createdAt: timestamp("created_at").defaultNow(),
 });
 
-// 8. Spa Services & Bookings
+// 10. Spa Services & Bookings
 export const spaServices = pgTable("spa_services", {
   id: serial("id").primaryKey(),
   name: text("name").notNull(),
@@ -105,7 +129,49 @@ export const spaBookings = pgTable("spa_bookings", {
   createdAt: timestamp("created_at").defaultNow(),
 });
 
-// 9. Reviews / Guest Feedback
+// 11. Restaurants & Reservations
+export const restaurants = pgTable("restaurants", {
+  id: serial("id").primaryKey(),
+  name: text("name").notNull(),
+  description: text("description"),
+  cuisine: text("cuisine"),
+  openingHours: text("opening_hours"),
+  imageUrl: text("image_url"),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+export const restaurantReservations = pgTable("restaurant_reservations", {
+  id: serial("id").primaryKey(),
+  restaurantId: integer("restaurant_id"),
+  userId: integer("user_id"),
+  guestName: text("guest_name"),
+  reservationDate: text("reservation_date").notNull(),
+  partySize: integer("party_size").default(2),
+  status: text("status").default("confirmed"),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+// 12. Events
+export const events = pgTable("events", {
+  id: serial("id").primaryKey(),
+  title: text("title").notNull(),
+  description: text("description"),
+  eventDate: text("event_date"),
+  location: text("location"),
+  imageUrl: text("image_url"),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+// 13. Favorites
+export const favorites = pgTable("favorites", {
+  id: serial("id").primaryKey(),
+  userId: integer("user_id").notNull(),
+  itemType: text("item_type").notNull(),
+  itemId: integer("item_id").notNull(),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+// 14. Reviews / Guest Feedback
 export const reviews = pgTable("reviews", {
   id: serial("id").primaryKey(),
   author: text("author").notNull().default("Guest"),
@@ -120,7 +186,7 @@ export const reviews = pgTable("reviews", {
   createdAt: timestamp("created_at").defaultNow(),
 });
 
-// 10. Sessions
+// 15. Sessions
 export const sessions = pgTable("sessions", {
   id: serial("id").primaryKey(),
   token: text("token").notNull().unique(),
@@ -129,7 +195,7 @@ export const sessions = pgTable("sessions", {
   createdAt: timestamp("created_at").defaultNow(),
 });
 
-// 11. Users
+// 16. Users
 export const users = pgTable("users", {
   id: serial("id").primaryKey(),
   username: text("username"),
@@ -145,22 +211,33 @@ export const users = pgTable("users", {
   createdAt: timestamp("created_at").defaultNow(),
 });
 
-
-// 12. Restaurants / Dining
-export const restaurants = pgTable("restaurants", {
+// 17. Event Inquiries
+export const eventInquiries = pgTable("event_inquiries", {
   id: serial("id").primaryKey(),
+  eventId: integer("event_id"),
+  userId: integer("user_id"),
   name: text("name").notNull(),
-  description: text("description"),
-  cuisine: text("cuisine"),
-  openingHours: text("opening_hours"),
-  imageUrl: text("image_url"),
+  email: text("email").notNull(),
+  phone: text("phone"),
+  eventDate: text("event_date"),
+  guestCount: integer("guest_count"),
+  message: text("message"),
+  status: text("status").default("pending"),
   createdAt: timestamp("created_at").defaultNow(),
 });
 
-// --- Legacy / Alternative Name Aliases (Must be at bottom) ---
+// --- Table Aliases ---
+export const eventInquiry = eventInquiries;
+
+// --- Table Aliases (For Backwards & Route Compatibility) ---
 export const resortContents = resortContent;
 export const gallery = mediaGallery;
 export const spaBooking = spaBookings;
 export const concierge = conciergeRequests;
 export const conciergeRequest = conciergeRequests;
 export const restaurant = restaurants;
+export const diningBookings = restaurantReservations;
+export const payment = payments;
+export const eventList = events;
+export const userFavorites = favorites;
+export const notification = notifications;

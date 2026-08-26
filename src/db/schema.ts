@@ -144,3 +144,23 @@ export const users = pgTable("users", {
   preferences: text("preferences"),
   createdAt: timestamp("created_at").defaultNow(),
 });
+
+
+// 12. Restaurants / Dining
+export const restaurants = pgTable("restaurants", {
+  id: serial("id").primaryKey(),
+  name: text("name").notNull(),
+  description: text("description"),
+  cuisine: text("cuisine"),
+  openingHours: text("opening_hours"),
+  imageUrl: text("image_url"),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+// --- Legacy / Alternative Name Aliases (Must be at bottom) ---
+export const resortContents = resortContent;
+export const gallery = mediaGallery;
+export const spaBooking = spaBookings;
+export const concierge = conciergeRequests;
+export const conciergeRequest = conciergeRequests;
+export const restaurant = restaurants;

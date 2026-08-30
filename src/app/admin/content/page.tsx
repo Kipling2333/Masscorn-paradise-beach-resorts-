@@ -19,12 +19,21 @@ interface Room {
   imageUrl: string;
 }
 
+interface PageItem {
+  id?: number;
+  section: "experiences" | "dining" | "spa" | "weddings" | "events";
+  title: string;
+  priceOrBadge: string;
+  description: string;
+  imageUrl: string;
+}
+
 export default function FullAdminCMS() {
   const [activeTab, setActiveTab] = useState<
     "homepage" | "accommodations" | "experiences" | "dining" | "spa" | "weddings" | "events" | "gallery"
   >("homepage");
 
-  // Homepage Content State
+  // --- Homepage Content State ---
   const [savingHome, setSavingHome] = useState(false);
   const [homeMessage, setHomeMessage] = useState("");
   const [homeContent, setHomeContent] = useState({
@@ -36,8 +45,7 @@ export default function FullAdminCMS() {
       "Nestled along untouched shorelines, Masscorn Paradise Resort blends natural beauty with world-class hospitality.",
   });
 
-  // Accommodations State
-  const [rooms, setRooms] = useState<Room[]>([]);
+  // --- Accommodations State ---
   const [newRoom, setNewRoom] = useState<Room>({
     name: "",
     pricePerNight: "",
@@ -46,8 +54,8 @@ export default function FullAdminCMS() {
     imageUrl: "",
   });
 
-  // Other Sections State
-  const [pageContent, setPageContent] = useState({
+  // --- Page Headings State ---
+  const [pageHeadings, setPageHeadings] = useState({
     experiencesTitle: "Unforgettable Coastal Experiences",
     experiencesDesc: "From private yacht charters to coral reef diving, discover tailor-made adventures.",
     diningTitle: "Exquisite Oceanfront Dining",
@@ -60,7 +68,18 @@ export default function FullAdminCMS() {
     eventsDesc: "Host your luxury corporate retreats and private celebrations against breathtaking horizons.",
   });
 
-  // Gallery State
+  // --- Custom Section Item State (For Dining, Spa, Weddings, etc.) ---
+  const [newSectionItem, setNewSectionItem] = useState<PageItem>({
+    section: "dining",
+    title: "",
+    priceOrBadge: "",
+    description: "",
+    imageUrl: "",
+  });
+
+  const [sectionImageFile, setSectionImageFile] = useState<File | null>(null);
+
+  // --- Gallery State ---
   const [file, setFile] = useState<File | null>(null);
   const [galleryTitle, setGalleryTitle] = useState("");
   const [galleryCategory, setGalleryCategory] = useState("Rooms");
@@ -111,18 +130,18 @@ export default function FullAdminCMS() {
     }
   };
 
-  const handleSavePageContent = async (e: React.FormEvent) => {
+  const handleSavePageHeadings = async (e: React.FormEvent) => {
     e.preventDefault();
-    setStatusMsg("Saving changes...");
+    setStatusMsg("Saving section heading...");
     try {
       const res = await fetch("/api/admin/content", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(pageContent),
+        body: JSON.stringify(pageHeadings),
       });
-      if (res.ok) setStatusMsg(`${activeTab.toUpperCase()} content updated successfully!`);
+      if (res.ok) setStatusMsg(`${activeTab.toUpperCase()} header details updated successfully!`);
     } catch {
-      setStatusMsg("Failed to save content.");
+      setStatusMsg("Failed to save section header.");
     }
   };
 
@@ -139,7 +158,55 @@ export default function FullAdminCMS() {
         setNewRoom({ name: "", pricePerNight: "", capacity: "", description: "", imageUrl: "" });
       }
     } catch {
-      setStatusMsg("Error creating room.");
+      setStatusMsg("Error creating room entry.");
+    }
+  };
+
+  const handleAddSectionItem = async (e: React.FormEvent, sectionName: PageItem["section"]) => {
+    e.preventDefault();
+    setStatusMsg(`Adding item to ${sectionName.toUpperCase()}...`);
+
+    let finalImageUrl = newSectionItem.imageUrl;
+
+    // Handle direct file upload if selected
+    if (sectionImageFile) {
+      const formData = new FormData();
+      formData.append("file", sectionImageFile);
+      formData.append("title", newSectionItem.title);
+      formData.append("category", sectionName);
+
+      try {
+        const uploadRes = await fetch("/api/admin/upload", {
+          method: "POST",
+          body: formData,
+        });
+        const uploadData = await uploadRes.json();
+        if (uploadRes.ok) {
+          finalImageUrl = uploadData.imageUrl || uploadData.url || finalImageUrl;
+        }
+      } catch (err) {
+        console.error("Image upload failed:", err);
+      }
+    }
+
+    try {
+      const res = await fetch("/api/admin/section-items", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...newSectionItem,
+          section: sectionName,
+          imageUrl: finalImageUrl,
+        }),
+      });
+
+      if (res.ok) {
+        setStatusMsg(`New item added to ${sectionName.toUpperCase()}!`);
+        setNewSectionItem({ section: sectionName, title: "", priceOrBadge: "", description: "", imageUrl: "" });
+        setSectionImageFile(null);
+      }
+    } catch {
+      setStatusMsg(`Failed to add item to ${sectionName}.`);
     }
   };
 
@@ -295,7 +362,7 @@ export default function FullAdminCMS() {
             <h2 className="text-2xl font-bold text-slate-800">Manage Rooms & Suites</h2>
             
             <form onSubmit={handleAddRoom} className="space-y-4 border-b pb-6">
-              <h3 className="text-lg font-semibold text-amber-600">Add New Accommodation</h3>
+              <h3 className="text-lg font-semibold text-amber-600">Add New Accommodation Entry</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <input
                   type="text"
@@ -340,68 +407,146 @@ export default function FullAdminCMS() {
           </div>
         )}
 
-        {/* 3. DYNAMIC SECTIONS (Experiences, Dining, Spa, Weddings, Events) */}
+        {/* 3. FULL DYNAMIC SECTIONS WITH IMAGE UPLOAD & MULTI-ITEM CREATOR */}
         {["experiences", "dining", "spa", "weddings", "events"].includes(activeTab) && (
-          <form onSubmit={handleSavePageContent} className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 space-y-6">
-            <h2 className="text-2xl font-bold text-slate-800 capitalize">Edit {activeTab} Page</h2>
-            
-            <div>
-              <label className="block text-sm font-semibold mb-2">Main Section Heading</label>
-              <input
-                type="text"
-                value={
-                  activeTab === "experiences"
-                    ? pageContent.experiencesTitle
-                    : activeTab === "dining"
-                    ? pageContent.diningTitle
-                    : activeTab === "spa"
-                    ? pageContent.spaTitle
-                    : activeTab === "weddings"
-                    ? pageContent.weddingsTitle
-                    : pageContent.eventsTitle
-                }
-                onChange={(e) =>
-                  setPageContent({
-                    ...pageContent,
-                    [`${activeTab}Title`]: e.target.value,
-                  })
-                }
-                className="w-full border p-3 rounded-lg text-sm"
-              />
-            </div>
+          <div className="space-y-8">
+            {/* Header Text Editor */}
+            <form onSubmit={handleSavePageHeadings} className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 space-y-6">
+              <h2 className="text-2xl font-bold text-slate-800 capitalize">Edit {activeTab} Header & Overview</h2>
+              
+              <div>
+                <label className="block text-sm font-semibold mb-2">Main Section Heading</label>
+                <input
+                  type="text"
+                  value={
+                    activeTab === "experiences"
+                      ? pageHeadings.experiencesTitle
+                      : activeTab === "dining"
+                      ? pageHeadings.diningTitle
+                      : activeTab === "spa"
+                      ? pageHeadings.spaTitle
+                      : activeTab === "weddings"
+                      ? pageHeadings.weddingsTitle
+                      : pageHeadings.eventsTitle
+                  }
+                  onChange={(e) =>
+                    setPageHeadings({
+                      ...pageHeadings,
+                      [`${activeTab}Title`]: e.target.value,
+                    })
+                  }
+                  className="w-full border p-3 rounded-lg text-sm"
+                />
+              </div>
 
-            <div>
-              <label className="block text-sm font-semibold mb-2">Detailed Paragraph</label>
-              <textarea
-                rows={4}
-                value={
-                  activeTab === "experiences"
-                    ? pageContent.experiencesDesc
-                    : activeTab === "dining"
-                    ? pageContent.diningDesc
-                    : activeTab === "spa"
-                    ? pageContent.spaDesc
-                    : activeTab === "weddings"
-                    ? pageContent.weddingsDesc
-                    : pageContent.eventsDesc
-                }
-                onChange={(e) =>
-                  setPageContent({
-                    ...pageContent,
-                    [`${activeTab}Desc`]: e.target.value,
-                  })
-                }
-                className="w-full border p-3 rounded-lg text-sm"
-              />
-            </div>
+              <div>
+                <label className="block text-sm font-semibold mb-2">Detailed Paragraph</label>
+                <textarea
+                  rows={3}
+                  value={
+                    activeTab === "experiences"
+                      ? pageHeadings.experiencesDesc
+                      : activeTab === "dining"
+                      ? pageHeadings.diningDesc
+                      : activeTab === "spa"
+                      ? pageHeadings.spaDesc
+                      : activeTab === "weddings"
+                      ? pageHeadings.weddingsDesc
+                      : pageHeadings.eventsDesc
+                  }
+                  onChange={(e) =>
+                    setPageHeadings({
+                      ...pageHeadings,
+                      [`${activeTab}Desc`]: e.target.value,
+                    })
+                  }
+                  className="w-full border p-3 rounded-lg text-sm"
+                />
+              </div>
 
-            <button
-              type="submit"
-              className="bg-amber-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-amber-700 transition uppercase tracking-wider text-xs"
-            >
-              Update {activeTab} Page
-            </button>
-          </form>
+              <button
+                type="submit"
+                className="bg-slate-800 text-white px-6 py-2.5 rounded-lg font-semibold hover:bg-slate-900 transition text-xs uppercase tracking-wider"
+              >
+                Save {activeTab} Header Text
+              </button>
+            </form>
+
+            {/* Add Custom Item / Offer / Package with Image Upload */}
+            <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 space-y-6">
+              <h2 className="text-2xl font-bold text-slate-800 capitalize">Add {activeTab} Offer / Package / Item</h2>
+              
+              <form
+                onSubmit={(e) => handleAddSectionItem(e, activeTab as PageItem["section"])}
+                className="space-y-4"
+              >
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 uppercase mb-2">Item Title</label>
+                    <input
+                      type="text"
+                      placeholder="e.g. Seafood Candlelight Dinner / Swedish Massage"
+                      value={newSectionItem.title}
+                      onChange={(e) => setNewSectionItem({ ...newSectionItem, title: e.target.value })}
+                      className="border p-3 rounded-lg text-sm w-full"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 uppercase mb-2">Price or Badge Tag</label>
+                    <input
+                      type="text"
+                      placeholder="e.g. $120 per couple / 60 Mins / Signature"
+                      value={newSectionItem.priceOrBadge}
+                      onChange={(e) => setNewSectionItem({ ...newSectionItem, priceOrBadge: e.target.value })}
+                      className="border p-3 rounded-lg text-sm w-full"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 uppercase mb-2">Upload Image File</label>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={(e) => setSectionImageFile(e.target.files?.[0] || null)}
+                      className="border p-2.5 rounded-lg text-sm w-full bg-slate-50"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 uppercase mb-2">Or Provide Image URL</label>
+                    <input
+                      type="text"
+                      placeholder="https://images.unsplash.com/..."
+                      value={newSectionItem.imageUrl}
+                      onChange={(e) => setNewSectionItem({ ...newSectionItem, imageUrl: e.target.value })}
+                      className="border p-3 rounded-lg text-sm w-full"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 uppercase mb-2">Description</label>
+                  <textarea
+                    placeholder="Describe what's included, ingredients, or highlights..."
+                    value={newSectionItem.description}
+                    onChange={(e) => setNewSectionItem({ ...newSectionItem, description: e.target.value })}
+                    className="border p-3 rounded-lg text-sm w-full"
+                    rows={3}
+                    required
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="bg-amber-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-amber-700 transition"
+                >
+                  Upload & Add to {activeTab.toUpperCase()}
+                </button>
+              </form>
+            </div>
+          </div>
         )}
 
         {/* 4. GALLERY TAB */}

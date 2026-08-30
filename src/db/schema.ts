@@ -226,8 +226,25 @@ export const eventInquiries = pgTable("event_inquiries", {
   createdAt: timestamp("created_at").defaultNow(),
 });
 
+// 18. Job Applications / Resume Submissions
+export const jobApplications = pgTable("job_applications", {
+  id: serial("id").primaryKey(),
+  fullName: text("full_name").notNull(),
+  email: text("email").notNull(),
+  phone: text("phone").notNull(),
+  country: text("country").notNull(),
+  department: text("department").notNull(),
+  position: text("position").notNull(),
+  coverLetter: text("cover_letter"),
+  resumeUrl: text("resume_url").notNull(),
+  status: text("status").default("pending"),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
 // --- Table Aliases ---
 export const eventInquiry = eventInquiries;
+export const jobApplication = jobApplications;
+export const careers = jobApplications;
 
 // --- Table Aliases (For Backwards & Route Compatibility) ---
 export const resortContents = resortContent;
